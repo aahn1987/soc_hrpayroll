@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Storage;
 use App\Models\IOMPersonnel;
 use App\Models\IomListPersonnel;
@@ -38,12 +39,12 @@ class IOMPersonnelController extends Controller
         $personnel->save();
         SysAdminLogs::create([
             'refrence' => $request->adminref,
-            'log_action' => 'IOM Personnel Update',
-            'log_details' => "Deleted IOM personnel Name: {$oldName} , Email: {$oldEmail}, Phone: {$oldPhone}"
+            'log_action' => 'IOM HR Delete',
+            'log_details' => "Deleted IOM HR Name: {$oldName} , Email: {$oldEmail}, Phone: {$oldPhone}"
         ]);
         return response()->json([
             'success' => true,
-            'message' => 'Personnel Deleted Successfully.'
+            'message' => 'HR ' . $oldName . ' Deleted Successfully.'
         ]);
     }
     public function update(Request $request)
@@ -67,12 +68,12 @@ class IOMPersonnelController extends Controller
         $personnel->save();
         SysAdminLogs::create([
             'refrence' => $request->adminref,
-            'log_action' => 'IOM Personnel Update',
-            'log_details' => "Updated IOM personnel: Name: {$oldName} → {$request->fullname}, Email: {$oldEmail} → {$request->emailaddress}, Phone: {$oldPhone} → {$request->phonenumber}"
+            'log_action' => 'IOM HR Update',
+            'log_details' => "Updated IOM HR: Name: {$oldName} → {$request->fullname}, Email: {$oldEmail} → {$request->emailaddress}, Phone: {$oldPhone} → {$request->phonenumber}"
         ]);
         return response()->json([
             'success' => true,
-            'message' => "Personnel  Name: {$oldName} → {$request->fullname}, Email: {$oldEmail} → {$request->emailaddress}, Phone: {$oldPhone} → {$request->phonenumber} Updated Successfully."
+            'message' => "HR  Name: {$oldName} → {$request->fullname}, Email: {$oldEmail} → {$request->emailaddress}, Phone: {$oldPhone} → {$request->phonenumber} Updated Successfully."
         ]);
     }
     public function loginifo(Request $request)
@@ -150,15 +151,15 @@ class IOMPersonnelController extends Controller
         ]);
         SysAdminLogs::create([
             'refrence' => $request->adminref,
-            'log_action' => 'IOM Personnel Update',
-            'log_details' => "Updated IOM personnel: Name: {$request->fullname}, Email:  {$request->emailaddress},  {$request->phonenumber}"
+            'log_action' => 'IOM HR Added',
+            'log_details' => "Added IOM HR: Name: {$request->fullname}, Email:  {$request->emailaddress},  {$request->phonenumber}"
         ]);
         return response()->json([
             'success' => true,
-            'message' => "Personnel  Name:  {$request->fullname}, Email:  {$request->emailaddress}, Phone:  {$request->phonenumber} Added Successfully."
+            'message' => "IOM HR  Name:  {$request->fullname}, Email:  {$request->emailaddress}, Phone:  {$request->phonenumber} Added Successfully."
         ]);
     }
-    public function editprofile(Request $request)
+    public function profile(Request $request)
     {
         $request->validate([
             'refrence' => 'required|string',
@@ -178,7 +179,7 @@ class IOMPersonnelController extends Controller
             'message' => "Profile Updated Successfully."
         ]);
     }
-    public function access(Request $request)
+    public function account(Request $request)
     {
         $request->validate([
             'refrence' => 'required|string',
