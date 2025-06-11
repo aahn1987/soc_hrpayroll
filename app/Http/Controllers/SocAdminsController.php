@@ -17,7 +17,6 @@ class SocAdminsController extends Controller
         $socadmins = SocListAdmins::get();
         return response()->json($socadmins);
     }
-
     public function show(Request $request)
     {
         $request->validate([
@@ -120,7 +119,7 @@ class SocAdminsController extends Controller
     {
         $request->validate([
             'refrence' => 'required|string',
-            'profileimage' => 'required|file|image|max:2048',
+            'profileimage' => 'required|file|image|max:16384',
         ]);
         $socadmin = SocAdmins::where('refrence', $request->refrence)
             ->where('deleted', 0)

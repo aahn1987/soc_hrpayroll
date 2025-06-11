@@ -28,4 +28,9 @@ if (!function_exists(('number_of_working_days'))) {
         return $days;
     }
 }
-
+if (!function_exists('')) {
+    function clear_string($string)
+    {
+        return strtolower(preg_replace('/[^a-zA-Z0-9]/', '', $string));
+    }
+}

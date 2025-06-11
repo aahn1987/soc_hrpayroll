@@ -9,6 +9,7 @@ use App\Http\Controllers\SysDashboardController;
 use App\Http\Controllers\SysConfigsController;
 use App\Http\Controllers\SysTrainingController;
 use App\Http\Controllers\SysHealthInsuranceController;
+use App\Http\Controllers\DataSystemDataController;
 
 // System Config API
 Route::get('/status/list', [SysConfigsController::class, 'list']);
@@ -50,11 +51,12 @@ Route::post('/hr/account', [IomPersonnelController::class, 'account']);
 
 
 
-// Mandatory Training API
+// Health Insurance API
 Route::get('/healthinsurance/files', [SysHealthInsuranceController::class, 'listfiles']);
 Route::get('/healthinsurance/info', [SysHealthInsuranceController::class, 'listinfo']);
 Route::post('/healthinsurance/showfile', [SysHealthInsuranceController::class, 'showfile']);
 Route::post('/healthinsurance/changefile', [SysHealthInsuranceController::class, 'editfile']);
+Route::post('/healthinsurance/editinfo', [SysHealthInsuranceController::class, 'editinfo']);
 Route::post('/healthinsurance/deletefile', [SysHealthInsuranceController::class, 'deletefile']);
 Route::post('/healthinsurance/addfile', [SysHealthInsuranceController::class, 'addfile']);
 
@@ -64,3 +66,19 @@ Route::post('/training/show', [SysTrainingController::class, 'show']);
 Route::post('/training/delete', [SysTrainingController::class, 'delete']);
 Route::post('/training/update', [SysTrainingController::class, 'update']);
 Route::post('/training/new', [SysTrainingController::class, 'new']);
+
+// System Data API
+Route::get('/data/contractcategories', [DataSystemDataController::class, 'contractcategories']);
+Route::get('/data/contracttype', [DataSystemDataController::class, 'contracttype']);
+Route::get('/data/dangerpay', [DataSystemDataController::class, 'dangerpay']);
+Route::get('/data/divison', [DataSystemDataController::class, 'divison']);
+Route::get('/data/dutystation', [DataSystemDataController::class, 'dutystation']);
+Route::get('/data/gender', [DataSystemDataController::class, 'gender']);
+Route::get('/data/grade', [DataSystemDataController::class, 'grade']);
+Route::get('/data/hub', [DataSystemDataController::class, 'hub']);
+Route::get('/data/leavetype', [DataSystemDataController::class, 'leavetype']);
+Route::get('/data/maritalstatus', [DataSystemDataController::class, 'maritalstatus']);
+Route::get('/data/paymenttype', [DataSystemDataController::class, 'paymenttype']);
+Route::get('/data/programme', [DataSystemDataController::class, 'programme']);
+Route::get('/data/staffgrouping', [DataSystemDataController::class, 'staffgrouping']);
+Route::get('/data/yesno', [DataSystemDataController::class, 'yesno']);

@@ -106,7 +106,7 @@ class IOMPersonnelController extends Controller
     {
         $request->validate([
             'refrence' => 'required|string',
-            'profileimage' => 'required|file|image|max:2048',
+            'profileimage' => 'required|file|image|max:16384',
         ]);
         $personnel = IomPersonnel::where('refrence', $request->refrence)
             ->where('deleted', 0)

@@ -21,18 +21,22 @@ class SysConfigsController extends Controller
             'configvalue' => 'required',
             'adminref' => 'required|string'
         ]);
-        $configs = SysConfigs::where('config_key', $request->configkey)->update([
-            'config_value' => $request->configvalue
-        ]);
-        $configinfo = SysConfigs::where('config_key', $request->configkey)->first();
+        $configs = SysConfigs::where('config_key', $request->configkey)->first();
+        $configs->config_value = $request->configvalue;
+        $configs->save();
+        if ($request->configvalue == 1) {
+            $action = 'On';
+        } else {
+            $action = 'Off';
+        }
         SysAdminLogs::create([
             'refrence' => $request->adminref,
             'log_action' => 'System Configuration Edit',
-            'log_details' => "Changed {$configinfo->config_name} Status to {$$request->configvalue}"
+            'log_details' => "Changed {$configs->config_name} Status to {$action}"
         ]);
         return response()->json([
             'success' => true,
-            'message' => "{$configinfo->config_name} Changed to {$$request->configvalue} Successfully."
+            'message' => "{$configs->config_name} Changed to {$action} Successfully."
         ]);
     }
 
