@@ -12,7 +12,7 @@ class SysLoginData extends Model
         'userrole',
         'user_reference'
     ];
-    protected $hiddem = [
+    protected $hidden = [
         'userpass'
     ];
 }

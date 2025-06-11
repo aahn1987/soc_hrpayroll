@@ -3,46 +3,38 @@
 namespace App\Http\Controllers;
 
 use App\Models\SysHealthInsurance;
+use App\Models\SysHealthInsuranceFiles;
 use Illuminate\Http\Request;
 
 class SysHealthInsuranceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function listfiles()
+    {
+        $healthinsurancefiles = SysHealthInsuranceFiles::select('filename', 'langauge', 'filelink', 'id')->get();
+        return response()->json($healthinsurancefiles);
+    }
+    public function listinfo()
+    {
+        $healthinsuranceinfo = SysHealthInsurance::select('text', 'langauge', 'video_url', 'id')->get();
+        return response()->json($healthinsuranceinfo);
+    }
+    public function showfile(Request $request)
     {
         //
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function editfile(Request $request)
     {
         //
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(SysHealthInsurance $sysHealthInsurance)
+    public function editinfo(Request $request)
     {
         //
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, SysHealthInsurance $sysHealthInsurance)
+    public function addfile(Request $request)
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(SysHealthInsurance $sysHealthInsurance)
+    public function deletefile(Request $request)
     {
         //
     }
