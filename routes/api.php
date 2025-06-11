@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\SysAdminLogsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SysLoginDataController;
 use App\Http\Controllers\IOMPersonnelController;
@@ -10,6 +10,11 @@ use App\Http\Controllers\SysConfigsController;
 use App\Http\Controllers\SysTrainingController;
 use App\Http\Controllers\SysHealthInsuranceController;
 use App\Http\Controllers\DataSystemDataController;
+use App\Http\Controllers\EmpDataAndStatusController;
+use App\Http\Controllers\EmpLeaveBalanceController;
+use App\Http\Controllers\EmpEvaluatedController;
+use App\Http\Controllers\AttPayrollController;
+use App\Http\Controllers\TestController;
 
 // System Config API
 Route::get('/status/list', [SysConfigsController::class, 'list']);
@@ -24,7 +29,6 @@ Route::get('/dashboard/empstats', [SysDashboardController::class, 'empstats']);
 Route::get('/dashboard/lastteneval', [SysDashboardController::class, 'lastteneval']);
 Route::get('/dashboard/lasttenleave', [SysDashboardController::class, 'lasttenleave']);
 Route::get('/dashboard/leavestats', [SysDashboardController::class, 'leavestats']);
-
 
 // SOC Admins API
 Route::get('/admin/list', [SocAdminsController::class, 'list']);
@@ -51,21 +55,28 @@ Route::post('/hr/account', [IomPersonnelController::class, 'account']);
 
 
 
-// Health Insurance API
-Route::get('/healthinsurance/files', [SysHealthInsuranceController::class, 'listfiles']);
-Route::get('/healthinsurance/info', [SysHealthInsuranceController::class, 'listinfo']);
-Route::post('/healthinsurance/showfile', [SysHealthInsuranceController::class, 'showfile']);
-Route::post('/healthinsurance/changefile', [SysHealthInsuranceController::class, 'editfile']);
-Route::post('/healthinsurance/editinfo', [SysHealthInsuranceController::class, 'editinfo']);
-Route::post('/healthinsurance/deletefile', [SysHealthInsuranceController::class, 'deletefile']);
-Route::post('/healthinsurance/addfile', [SysHealthInsuranceController::class, 'addfile']);
+//Payroll API
+Route::post('/payroll/list', [AttPayrollController::class, 'list']);
+Route::post('/payroll/totals', [AttPayrollController::class, 'sums']);
+Route::post('/payroll/delete', [AttPayrollController::class, 'delete']);
+Route::post('/payroll/show', [AttPayrollController::class, 'show']);
 
-// Mandatory Training API
-Route::get('/training/list', [SysTrainingController::class, 'list']);
-Route::post('/training/show', [SysTrainingController::class, 'show']);
-Route::post('/training/delete', [SysTrainingController::class, 'delete']);
-Route::post('/training/update', [SysTrainingController::class, 'update']);
-Route::post('/training/new', [SysTrainingController::class, 'new']);
+// Employees Data and Status API
+Route::post('/emps/activate', [EmpDataAndStatusController::class, 'statuschanger']);
+
+// Emplyees Leaves & Leave Balance API
+Route::post('/leave/balance/increase', [EmpLeaveBalanceController::class, 'increasebalance']);
+Route::post('/leave/balance/update', [EmpLeaveBalanceController::class, 'increasebalanceemp']);
+Route::post('/leave/balance/show', [EmpLeaveBalanceController::class, 'show']);
+Route::post('/leave/balance/import', [EmpLeaveBalanceController::class, 'importbalance']);
+
+// Emplyees Evaluations And Objectives Stats API
+Route::post('/evaluations/stats/evaluated', [EmpEvaluatedController::class, 'evaluated']);
+Route::post('/evaluations/stats/notevaluated', [EmpEvaluatedController::class, 'notevaluated']);
+Route::post('/evaluations/stats/list', [EmpEvaluatedController::class, 'evaluations']);
+Route::post('/evaluations/stats/nobjectives', [EmpEvaluatedController::class, 'nobjectives']);
+Route::post('/evaluations/stats/pendingbjectives', [EmpEvaluatedController::class, 'pendingbjectives']);
+Route::post('/evaluations/stats/approvedbjectives', [EmpEvaluatedController::class, 'approvedbjectives']);
 
 // System Data API
 Route::get('/data/contractcategories', [DataSystemDataController::class, 'contractcategories']);
@@ -82,3 +93,27 @@ Route::get('/data/paymenttype', [DataSystemDataController::class, 'paymenttype']
 Route::get('/data/programme', [DataSystemDataController::class, 'programme']);
 Route::get('/data/staffgrouping', [DataSystemDataController::class, 'staffgrouping']);
 Route::get('/data/yesno', [DataSystemDataController::class, 'yesno']);
+
+// Health Insurance API
+Route::get('/healthinsurance/files', [SysHealthInsuranceController::class, 'listfiles']);
+Route::get('/healthinsurance/info', [SysHealthInsuranceController::class, 'listinfo']);
+Route::post('/healthinsurance/showfile', [SysHealthInsuranceController::class, 'showfile']);
+Route::post('/healthinsurance/changefile', [SysHealthInsuranceController::class, 'editfile']);
+Route::post('/healthinsurance/editinfo', [SysHealthInsuranceController::class, 'editinfo']);
+Route::post('/healthinsurance/deletefile', [SysHealthInsuranceController::class, 'deletefile']);
+Route::post('/healthinsurance/addfile', [SysHealthInsuranceController::class, 'addfile']);
+
+// Mandatory Training API
+Route::get('/training/list', [SysTrainingController::class, 'list']);
+Route::post('/training/show', [SysTrainingController::class, 'show']);
+Route::post('/training/delete', [SysTrainingController::class, 'delete']);
+Route::post('/training/update', [SysTrainingController::class, 'update']);
+Route::post('/training/new', [SysTrainingController::class, 'new']);
+
+// Logs API
+Route::get('/logs/admin/list', [SysAdminLogsController::class, 'alllogs']);
+Route::post('/logs/admin/byadmin', [SysAdminLogsController::class, 'logsbyadmin']);
+Route::post('/logs/admin/clear', [SysAdminLogsController::class, 'clearlogs']);
+
+// Test API
+Route::get('/test/listds', [TestController::class, 'listds']);

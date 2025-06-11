@@ -2,48 +2,72 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EmpEvaluated;
+use App\Models\EmpListEvaluated;
+use App\Models\EmpListNotEvaluated;
+use App\Models\EmpListEvaluations;
+use App\Models\EmpListObjectives;
 use Illuminate\Http\Request;
 
 class EmpEvaluatedController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function evaluated(Request $request)
     {
-        //
+        $request->validate([
+            'month' => 'required|string',
+            'year' => 'required|numeric',
+        ]);
+        $month = $request->month;
+        $year = $request->year;
+        $evlauted = EmpListEvaluated::where('schedule_month', $month)
+            ->where('schedule_year', $year)
+            ->get();
+        return response()->json($evlauted);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function notevaluated(Request $request)
     {
-        //
+        $request->validate([
+            'month' => 'required|string',
+            'year' => 'required|numeric',
+        ]);
+        $month = $request->month;
+        $year = $request->year;
+        $notevlauted = EmpListNotEvaluated::where('schedule_month', $month)
+            ->where('schedule_year', $year)
+            ->get();
+        return response()->json($notevlauted);
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(EmpEvaluated $empEvaluated)
+    public function evaluations(Request $request)
     {
-        //
+        $request->validate([
+            'from_date' => 'required|date',
+            'to_date' => 'required|date|after_or_equal:from_date',
+        ]);
+        $from = $request->from_date;
+        $to = $request->to_date;
+        $evaluations = EmpListEvaluations::whereDate('request_date', '>=', $from)
+            ->where('request_date', '<=', $to)
+            ->get();
+        return response()->json($evaluations);
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, EmpEvaluated $empEvaluated)
+    public function nobjectives()
     {
-        //
+        $nobjectives = EmpListObjectives::where('objective_text', '<p></p>')
+            ->where('employee_status', 1)
+            ->get();
+        return response()->json($nobjectives);
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(EmpEvaluated $empEvaluated)
+    public function pendingbjectives()
     {
-        //
+        $pendingbjectives = EmpListObjectives::where('objective_text', 'NOT LIKE', '%<p></p>%')
+            ->where('employee_status', 1)->where('supervisor_approval', operator: 0)->orWhere('head_of_sub_office_approval', 0)
+            ->get();
+        return response()->json($pendingbjectives);
+    }
+    public function approvedbjectives()
+    {
+        $approvedbjectives = EmpListObjectives::where('objective_text', 'NOT LIKE', '%<p></p>%')
+            ->where('employee_status', 1)->where('supervisor_approval', operator: 1)->where('head_of_sub_office_approval', 1)
+            ->get();
+        return response()->json($approvedbjectives);
     }
 }

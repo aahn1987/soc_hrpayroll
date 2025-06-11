@@ -3,47 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\SysAdminLogs;
+use App\Models\SocListLogs;
 use Illuminate\Http\Request;
 
 class SysAdminLogsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function alllogs()
     {
-        //
+        $loglist = SocListLogs::get();
+        return response()->json($loglist);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function logsbyadmin(Request $request)
     {
-        //
+        $request->validate([
+            'ref' => 'required|string',
+        ]);
+        $loglist = SocListLogs::where('refrence', $request->ref)->get();
+        return response()->json($loglist);
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(SysAdminLogs $sysAdminLogs)
+    public function clearlogs()
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, SysAdminLogs $sysAdminLogs)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(SysAdminLogs $sysAdminLogs)
-    {
-        //
+        SysAdminLogs::truncate();
+        return response()->json([
+            'message' => "Logs Cleared Successfully.",
+            'success' => true,
+        ]);
     }
 }
