@@ -13,6 +13,7 @@ class EmpContractHistory extends Model
     public $timestamps = true;
 
     protected $fillable = [
+        'id',
         'soc_reference',
         'hub_id',
         'duty_station_id',
@@ -35,12 +36,4 @@ class EmpContractHistory extends Model
         'deleted',
     ];
 
-    protected $casts = [
-        'first_employement_date' => 'date',
-        'soc_employemrnt_date' => 'date',
-        'contract_start' => 'date',
-        'contract_end' => 'date',
-        'is_current' => 'boolean',
-        'deleted' => 'boolean',
-    ];
 }

@@ -14,6 +14,7 @@ use App\Http\Controllers\EmpLeaveBalanceController;
 use App\Http\Controllers\EmpEvaluatedController;
 use App\Http\Controllers\AttPayrollController;
 use App\Http\Controllers\SysAdminLogsController;
+use App\Http\Controllers\EmpContractHistoryController;
 use App\Http\Controllers\TestController;
 
 // System Config API
@@ -51,6 +52,17 @@ Route::post('/hr/new', [IomPersonnelController::class, 'new']);
 Route::post('/hr/profile', [IomPersonnelController::class, 'profile']);
 Route::post('/hr/loginifo', [IomPersonnelController::class, 'loginifo']);
 Route::post('/hr/account', [IomPersonnelController::class, 'account']);
+
+//Employees API - History
+Route::post('/employee/history/show', [EmpContractHistoryController::class, 'showhistory']);
+Route::post('/employee/history/current', [EmpContractHistoryController::class, 'getcurrent']);
+Route::post('/employee/history/new', [EmpContractHistoryController::class, 'addhistory']);
+Route::post('/employee/history/edit', [EmpContractHistoryController::class, 'edithistory']);
+Route::post('/employee/history/clearcurrent', [EmpContractHistoryController::class, 'clearcurrent']);
+Route::post('/employee/history/delete', [EmpContractHistoryController::class, 'deletehistory']);
+Route::post('/employee/history/getcontend', [EmpContractHistoryController::class, 'contractend']);
+
+
 
 
 
