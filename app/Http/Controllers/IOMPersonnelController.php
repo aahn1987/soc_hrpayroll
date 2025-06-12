@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use App\Models\IOMPersonnel;
 use App\Models\IomListPersonnel;
-use App\Models\SysLoginData;
-use App\Models\SysAdminLogs;
+use App\Http\Controllers\SysLoginDataController;
+use App\Http\Controllers\SysAdminLogsController;
 use Illuminate\Http\Request;
 class IOMPersonnelController extends Controller
 {
@@ -27,21 +27,19 @@ class IOMPersonnelController extends Controller
     }
     public function delete(Request $request)
     {
-        $request->validate([
-            'refrence' => 'required|string',
-            'adminref' => 'required|string'
-        ]);
         $personnel = IomPersonnel::where('refrence', $request->refrence)->first();
         $oldName = $personnel->fullname;
         $oldEmail = $personnel->emailaddress;
         $oldPhone = $personnel->phonenumber;
         $personnel->deleted = 1;
         $personnel->save();
-        SysAdminLogs::create([
+        $logdata = [
             'refrence' => $request->adminref,
-            'log_action' => 'IOM HR Delete',
+            'log_action' => 'IOM HR',
             'log_details' => "Deleted IOM HR Name: {$oldName} , Email: {$oldEmail}, Phone: {$oldPhone}"
-        ]);
+        ];
+        $logadd = new SysAdminLogsController;
+        $logadd->addlog($logdata);
         return response()->json([
             'success' => true,
             'message' => 'HR ' . $oldName . ' Deleted Successfully.'
@@ -49,13 +47,6 @@ class IOMPersonnelController extends Controller
     }
     public function update(Request $request)
     {
-        $request->validate([
-            'refrence' => 'required|string',
-            'fullname' => 'required|string',
-            'emailaddress' => 'required|email',
-            'phonenumber' => 'nullable|string',
-            'adminref' => 'required|string'
-        ]);
         $personnel = IomPersonnel::where('refrence', $request->refrence)
             ->where('deleted', 0)
             ->first();
@@ -66,11 +57,13 @@ class IOMPersonnelController extends Controller
         $personnel->emailaddress = $request->emailaddress;
         $personnel->phonenumber = $request->phonenumber;
         $personnel->save();
-        SysAdminLogs::create([
+        $logdata = [
             'refrence' => $request->adminref,
-            'log_action' => 'IOM HR Update',
+            'log_action' => 'IOM HR',
             'log_details' => "Updated IOM HR: Name: {$oldName} → {$request->fullname}, Email: {$oldEmail} → {$request->emailaddress}, Phone: {$oldPhone} → {$request->phonenumber}"
-        ]);
+        ];
+        $logadd = new SysAdminLogsController;
+        $logadd->addlog($logdata);
         return response()->json([
             'success' => true,
             'message' => "HR  Name: {$oldName} → {$request->fullname}, Email: {$oldEmail} → {$request->emailaddress}, Phone: {$oldPhone} → {$request->phonenumber} Updated Successfully."
@@ -78,25 +71,16 @@ class IOMPersonnelController extends Controller
     }
     public function loginifo(Request $request)
     {
-        $request->validate([
-            'refrence' => 'required|string',
-            'username' => 'required|string|max:255',
-            'fullname' => 'required|string',
-            'password' => 'nullable|string',
-            'adminref' => 'required|string'
-        ]);
-        $loginData = SysLoginData::where('user_reference', $request->reference)->first();
-        $loginData->username = $request->username;
-        if ($request->filled('password')) {
-            $loginData->userpass = md5($request->password);
-        }
-
-        $loginData->save();
-        SysAdminLogs::create([
+        $logindata = $request->all();
+        $editlogindata = new SysLoginDataController;
+        $editlogindata->editlogindata($logindata);
+        $logdata = [
             'refrence' => $request->adminref,
-            'log_action' => 'IOM Personnel Update',
+            'log_action' => 'IOM HR',
             'log_details' => "Updated IOM HR {$request->fullname} Login Data."
-        ]);
+        ];
+        $logadd = new SysAdminLogsController;
+        $logadd->addlog($logdata);
         return response()->json([
             'success' => true,
             'message' => "IOM HR  {$request->fullname} Login Data Updated Successfully."
@@ -104,10 +88,6 @@ class IOMPersonnelController extends Controller
     }
     public function profileimage(Request $request)
     {
-        $request->validate([
-            'refrence' => 'required|string',
-            'profileimage' => 'required|file|image|max:16384',
-        ]);
         $personnel = IomPersonnel::where('refrence', $request->refrence)
             ->where('deleted', 0)
             ->first();
@@ -126,15 +106,6 @@ class IOMPersonnelController extends Controller
     }
     public function new(Request $request)
     {
-        $request->validate([
-            'fullname' => 'required|string|max:255',
-            'emailaddress' => 'required|email|max:255',
-            'phonenumber' => 'nullable|string|max:255',
-            'username' => 'required|string',
-            'userpass' => 'required|string',
-            'adminref' => 'required|string'
-        ]);
-
         $reference = 'iomhr-' . date('YmdHis');
         IomPersonnel::create([
             'reference' => $reference,
@@ -143,17 +114,21 @@ class IOMPersonnelController extends Controller
             'phonenumber' => $request->phonenumber,
             'profileimage' => asset(Storage::url('/profileimages/default.jpg')),
         ]);
-        SysLoginData::create([
+        $logindata = [
             'username' => $request->username,
             'userpass' => $request->userpass,
-            'userrole' => 'organization',
+            'userrole' => 'admin',
             'user_reference' => $reference,
-        ]);
-        SysAdminLogs::create([
+        ];
+        $addLogindata = new SysLoginDataController;
+        $addLogindata->addlogindata($logindata);
+        $logdata = [
             'refrence' => $request->adminref,
-            'log_action' => 'IOM HR Added',
+            'log_action' => 'IOM HR',
             'log_details' => "Added IOM HR: Name: {$request->fullname}, Email:  {$request->emailaddress},  {$request->phonenumber}"
-        ]);
+        ];
+        $logadd = new SysAdminLogsController;
+        $logadd->addlog($logdata);
         return response()->json([
             'success' => true,
             'message' => "IOM HR  Name:  {$request->fullname}, Email:  {$request->emailaddress}, Phone:  {$request->phonenumber} Added Successfully."
@@ -161,12 +136,6 @@ class IOMPersonnelController extends Controller
     }
     public function profile(Request $request)
     {
-        $request->validate([
-            'refrence' => 'required|string',
-            'fullname' => 'required|string',
-            'emailaddress' => 'required|email',
-            'phonenumber' => 'nullable|string',
-        ]);
         $personnel = IomPersonnel::where('refrence', $request->refrence)
             ->where('deleted', 0)
             ->first();
@@ -181,22 +150,14 @@ class IOMPersonnelController extends Controller
     }
     public function account(Request $request)
     {
-        $request->validate([
-            'refrence' => 'required|string',
-            'username' => 'required|string|max:255',
-            'fullname' => 'required|string',
-            'password' => 'nullable|string',
-            'adminref' => 'required|string'
-        ]);
-        $loginData = SysLoginData::where('user_reference', $request->reference)->first();
-        $loginData->username = $request->username;
-        if ($request->filled('password')) {
-            $loginData->userpass = md5($request->password);
-        }
-        $loginData->save();
+
+        $logindata = $request->all();
+        $editlogindata = new SysLoginDataController;
+        $editlogindata->editlogindata($logindata);
         return response()->json([
             'success' => true,
             'message' => "Your Login Data Updated Successfully."
         ]);
+
     }
 }

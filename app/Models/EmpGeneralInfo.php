@@ -7,8 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class EmpGeneralInfo extends Model
 {
     protected $table = 'emp_generalinfo';
+
+    protected $primaryKey = 'id';
+
     public $timestamps = true;
+
     protected $fillable = [
+        'employee_reference',
         'soc_reference',
         'fullname',
         'profilepicture',
@@ -23,5 +28,14 @@ class EmpGeneralInfo extends Model
         'homeaddress',
         'employee_status',
         'deleted',
+    ];
+
+    protected $casts = [
+        'gender' => 'integer',
+        'marital_status' => 'integer',
+        'no_of_dependants' => 'integer',
+        'employee_status' => 'boolean',
+        'deleted' => 'boolean',
+        'date_of_birth' => 'date',
     ];
 }

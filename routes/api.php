@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\SysAdminLogsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SysLoginDataController;
 use App\Http\Controllers\IOMPersonnelController;
@@ -14,6 +13,7 @@ use App\Http\Controllers\EmpDataAndStatusController;
 use App\Http\Controllers\EmpLeaveBalanceController;
 use App\Http\Controllers\EmpEvaluatedController;
 use App\Http\Controllers\AttPayrollController;
+use App\Http\Controllers\SysAdminLogsController;
 use App\Http\Controllers\TestController;
 
 // System Config API
@@ -111,7 +111,7 @@ Route::post('/training/update', [SysTrainingController::class, 'update']);
 Route::post('/training/new', [SysTrainingController::class, 'new']);
 
 // Logs API
-Route::get('/logs/admin/list', [SysAdminLogsController::class, 'alllogs']);
+Route::post('/logs/admin/list', [SysAdminLogsController::class, 'alllogs']);
 Route::post('/logs/admin/byadmin', [SysAdminLogsController::class, 'logsbyadmin']);
 Route::post('/logs/admin/clear', [SysAdminLogsController::class, 'clearlogs']);
 

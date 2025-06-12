@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\SysConfigs;
-use App\Models\SysAdminLogs;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\SysAdminLogsController;
 class SysConfigsController extends Controller
 {
     public function list()
@@ -16,11 +15,6 @@ class SysConfigsController extends Controller
     }
     public function update(Request $request)
     {
-        $request->validate([
-            'configkey' => 'required|string',
-            'configvalue' => 'required',
-            'adminref' => 'required|string'
-        ]);
         $configs = SysConfigs::where('config_key', $request->configkey)->first();
         $configs->config_value = $request->configvalue;
         $configs->save();
@@ -29,11 +23,13 @@ class SysConfigsController extends Controller
         } else {
             $action = 'Off';
         }
-        SysAdminLogs::create([
+        $logdata = [
             'refrence' => $request->adminref,
-            'log_action' => 'System Configuration Edit',
+            'log_action' => 'System Configuration',
             'log_details' => "Changed {$configs->config_name} Status to {$action}"
-        ]);
+        ];
+        $logadd = new SysAdminLogsController;
+        $logadd->addlog($logdata);
         return response()->json([
             'success' => true,
             'message' => "{$configs->config_name} Changed to {$action} Successfully."

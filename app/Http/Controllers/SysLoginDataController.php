@@ -13,10 +13,6 @@ class SysLoginDataController extends Controller
 {
     public function login(Request $request)
     {
-        $request->validate([
-            'username' => 'required|string',
-            'userpass' => 'required|string',
-        ]);
         $user = SysLoginData::where('username', $request->username)
             ->where('userpass', $request->userpass)
             ->first();
@@ -36,9 +32,6 @@ class SysLoginDataController extends Controller
     }
     public function reset(Request $request)
     {
-        $request->validate([
-            'username' => 'required|string',
-        ]);
         $user = SysLoginData::where('username', $request->username)->first();
         if (!$user) {
             return response()->json([
@@ -74,5 +67,23 @@ class SysLoginDataController extends Controller
             'success' => true,
             'message' => 'New password sent to your email.',
         ]);
+    }
+    public function addlogindata(array $logindata = [])
+    {
+        SysLoginData::create([
+            'username' => $logindata['username'],
+            'userpass' => $logindata['userpass'],
+            'userrole' => $logindata['userrole'],
+            'user_reference' => $logindata['user_reference'],
+        ]);
+    }
+    public function editlogindata(array $logindata = [])
+    {
+        $updatelogindata = SysLoginData::where('user_reference', $logindata['user_reference'])->first();
+        $updatelogindata->username = $logindata['username'];
+        if (filled($logindata['userpass'])) {
+            $updatelogindata->userpass = md5($logindata['userpass']);
+        }
+        $updatelogindata->save();
     }
 }

@@ -15,10 +15,7 @@ class SysAdminLogsController extends Controller
     }
     public function logsbyadmin(Request $request)
     {
-        $request->validate([
-            'ref' => 'required|string',
-        ]);
-        $loglist = SocListLogs::where('refrence', $request->ref)->get();
+        $loglist = SocListLogs::where('refrence', $request->refrence)->get();
         return response()->json($loglist);
     }
     public function clearlogs()
@@ -27,6 +24,14 @@ class SysAdminLogsController extends Controller
         return response()->json([
             'message' => "Logs Cleared Successfully.",
             'success' => true,
+        ]);
+    }
+    public function addlog($logsdata = [])
+    {
+        SysAdminLogs::create([
+            'refrence' => $logsdata['adminref'],
+            'log_action' => $logsdata['log_action'],
+            'log_details' => $logsdata['log_details']
         ]);
     }
 }

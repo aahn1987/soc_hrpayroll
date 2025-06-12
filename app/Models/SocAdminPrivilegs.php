@@ -9,6 +9,7 @@ class SocAdminPrivilegs extends Model
     protected $table = 'soc_admin_privileges';
     public $timestamps = true;
     protected $fillable = [
+        'refrence',
         'manage_staff',
         'manage_iom',
         'manage_employees',

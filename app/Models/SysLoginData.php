@@ -9,6 +9,7 @@ class SysLoginData extends Model
     protected $table = "sys_logindata";
     protected $fillable = [
         'username',
+        'userpass',
         'userrole',
         'user_reference'
     ];

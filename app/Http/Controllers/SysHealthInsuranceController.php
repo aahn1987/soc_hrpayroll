@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use App\Models\SysHealthInsurance;
 use App\Models\SysHealthInsuranceFiles;
+use App\Http\Controllers\SysAdminLogsController;
 use Illuminate\Http\Request;
 
 class SysHealthInsuranceController extends Controller
@@ -21,24 +22,13 @@ class SysHealthInsuranceController extends Controller
     }
     public function showfile(Request $request)
     {
-        $request->validate([
-            'id' => 'required'
-        ]);
         $healthinsurancefiles = SysHealthInsuranceFiles::select('filename', 'langauge', 'filelink', 'id')->where('id', $request->id)->get();
         return response()->json($healthinsurancefiles);
     }
     public function editfile(Request $request)
     {
-        $request->validate([
-            'id' => 'required',
-            'filename' => 'required|string',
-            'langauge' => 'required|string',
-        ]);
         $healthinsurancefile = SysHealthInsuranceFiles::where('id', $request->id)->first();
         if ($request->hasFile('filelink')) {
-            $request->validate([
-                'filelink' => 'file|mimes:pdf,doc,docx|max:16384',
-            ]);
             $nfn = 'healthins-' . date('YmdHis');
             $file = $request->file('filelink');
             $extension = $file->getClientOriginalExtension();
@@ -51,6 +41,13 @@ class SysHealthInsuranceController extends Controller
         $healthinsurancefile->filename = $request->filename;
         $healthinsurancefile->langauge = $request->langauge;
         $healthinsurancefile->save();
+        $logdata = [
+            'refrence' => $request->adminref,
+            'log_action' => 'Health Insurance',
+            'log_details' => "Updated health insurance file Name:{$healthinsurancefile->filename}→{$request->filename}, Language:{$healthinsurancefile->langauge}→{$request->langauge}, Link:{$healthinsurancefile->filelink}→{$fullUrl}"
+        ];
+        $logadd = new SysAdminLogsController;
+        $logadd->addlog($logdata);
         return response()->json([
             'success' => true,
             'message' => "Health insurance file updated successfully.",
@@ -58,16 +55,8 @@ class SysHealthInsuranceController extends Controller
     }
     public function editinfo(Request $request)
     {
-        $request->validate([
-            'id' => 'required',
-            'text' => 'required|string',
-            'langauge' => 'required|string',
-        ]);
         $healthinsurance = SysHealthInsurance::where('id', $request->id)->first();
         if ($request->hasFile('video_url')) {
-            $request->validate([
-                'video_url' => 'file|mimes:pdf,doc,docx|max:16384',
-            ]);
             $nfn = 'healthins-' . date('YmdHis');
             $file = $request->file('video_url');
             $extension = $file->getClientOriginalExtension();
@@ -79,6 +68,13 @@ class SysHealthInsuranceController extends Controller
         $healthinsurance->text = $request->text;
         $healthinsurance->langauge = $request->langauge;
         $healthinsurance->save();
+        $logdata = [
+            'refrence' => $request->adminref,
+            'log_action' => 'Health Insurance',
+            'log_details' => "Updated health insurance info Language:{$healthinsurance->langauge}→{$request->langauge}, Link:{$healthinsurance->video_url}→{$fullUrl}"
+        ];
+        $logadd = new SysAdminLogsController;
+        $logadd->addlog($logdata);
         return response()->json([
             'success' => true,
             'message' => "Health insurance info updated successfully.",
@@ -86,12 +82,6 @@ class SysHealthInsuranceController extends Controller
     }
     public function addfile(Request $request)
     {
-        $request->validate([
-            'id' => 'required',
-            'filelink' => 'required|file|mimes:pdf,doc,docx|max:16384',
-            'filename' => 'required|string',
-            'langauge' => 'required|string',
-        ]);
         $nfn = 'healthins-' . date('YmdHis');
         $file = $request->file('filelink');
         $extension = $file->getClientOriginalExtension();
@@ -103,6 +93,13 @@ class SysHealthInsuranceController extends Controller
             'langauge' => $request->langauge,
             'filelink' => $request->filelink,
         ]);
+        $logdata = [
+            'refrence' => $request->adminref,
+            'log_action' => 'Health Insurance',
+            'log_details' => "Added health insurance file Name:{$request->filename}, Language:{$request->langauge}, Link:{$fullUrl}"
+        ];
+        $logadd = new SysAdminLogsController;
+        $logadd->addlog($logdata);
         return response()->json([
             'url' => $fullUrl,
             'success' => true,
@@ -111,12 +108,16 @@ class SysHealthInsuranceController extends Controller
     }
     public function deletefile(Request $request)
     {
-        $request->validate([
-            'id' => 'required',
-        ]);
         $healthinsurancefiles = SysHealthInsuranceFiles::where('id', $request->id)->get();
         $healthinsurancefiles->deleted = 1;
         $healthinsurancefiles->save();
+        $logdata = [
+            'refrence' => $request->adminref,
+            'log_action' => 'Health Insurance',
+            'log_details' => "Deleted health insurance file Name:{$healthinsurancefiles->filename}, Language:{$healthinsurancefiles->langauge}, Link:{$healthinsurancefiles->filelink}"
+        ];
+        $logadd = new SysAdminLogsController;
+        $logadd->addlog($logdata);
         return response()->json([
             'success' => true,
             'message' => "Health Insurance file {$healthinsurancefiles->filename} Deleted Successfully."

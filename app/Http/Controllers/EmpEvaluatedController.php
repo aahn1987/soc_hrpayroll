@@ -12,10 +12,6 @@ class EmpEvaluatedController extends Controller
 {
     public function evaluated(Request $request)
     {
-        $request->validate([
-            'month' => 'required|string',
-            'year' => 'required|numeric',
-        ]);
         $month = $request->month;
         $year = $request->year;
         $evlauted = EmpListEvaluated::where('schedule_month', $month)
@@ -25,10 +21,6 @@ class EmpEvaluatedController extends Controller
     }
     public function notevaluated(Request $request)
     {
-        $request->validate([
-            'month' => 'required|string',
-            'year' => 'required|numeric',
-        ]);
         $month = $request->month;
         $year = $request->year;
         $notevlauted = EmpListNotEvaluated::where('schedule_month', $month)
@@ -38,10 +30,6 @@ class EmpEvaluatedController extends Controller
     }
     public function evaluations(Request $request)
     {
-        $request->validate([
-            'from_date' => 'required|date',
-            'to_date' => 'required|date|after_or_equal:from_date',
-        ]);
         $from = $request->from_date;
         $to = $request->to_date;
         $evaluations = EmpListEvaluations::whereDate('request_date', '>=', $from)

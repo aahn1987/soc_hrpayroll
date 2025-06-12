@@ -3,22 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\EmpLeaveBalance;
-use App\Models\SysAdminLogs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Maatwebsite\Excel\Facades\Excel;
 use PhpOffice\PhpSpreadsheet\IOFactory;
-
+use App\Http\Controllers\SysAdminLogsController;
 
 class EmpLeaveBalanceController extends Controller
 {
     public function increasebalance(Request $request)
     {
-        $request->validate([
-            'leave_type' => 'required|in:annual,sick',
-            'days' => 'required|numeric|min:0.5',
-            'adminref' => 'required|string'
-        ]);
         $employees = EmpLeavebalance::where('deleted', 0)->get();
         foreach ($employees as $employee) {
             switch ($request->leave_type) {
@@ -33,11 +26,13 @@ class EmpLeaveBalanceController extends Controller
 
             $employee->save();
         }
-        SysAdminLogs::create([
+        $logdata = [
             'refrence' => $request->adminref,
-            'log_action' => 'Leave Balance Update',
+            'log_action' => 'Leave Balance',
             'log_details' => "Increase {$request->leave_type} leave balance by {$request->days} days."
-        ]);
+        ];
+        $logadd = new SysAdminLogsController;
+        $logadd->addlog($logdata);
         return response()->json([
             'message' => "Leave balance ({$request->leave_type}) increased by {$request->days} days for all employees.",
             'success' => true,
@@ -45,13 +40,6 @@ class EmpLeaveBalanceController extends Controller
     }
     public function increasebalanceemp(Request $request)
     {
-        $request->validate([
-            'soc_reference' => 'required|string',
-            'annual' => 'required|numeric',
-            'sick' => 'required|numeric',
-            'carried' => 'required|numeric',
-            'adminref' => 'required|string'
-        ]);
         $employeeLeaveBal = EmpLeavebalance::where('soc_reference', $request->soc_reference)
             ->where('deleted', 0)
             ->first();
@@ -59,11 +47,13 @@ class EmpLeaveBalanceController extends Controller
         $employeeLeaveBal->sick_leave_balance = $request->sick;
         $employeeLeaveBal->carried_forward_balance = $request->carried;
         $employeeLeaveBal->save();
-        SysAdminLogs::create([
+        $logdata = [
             'refrence' => $request->adminref,
-            'log_action' => 'Leave Balance Update',
+            'log_action' => 'Employee Leave Balance',
             'log_details' => "Updated employee {$request->soc_reference} leave balance For Annual Leaves {$request->annual}, Sick Leave {$request->sick} and Carried Forward {$request->carried}."
-        ]);
+        ];
+        $logadd = new SysAdminLogsController;
+        $logadd->addlog($logdata);
         return response()->json([
             'message' => "Employee {$request->soc_reference} Leave balance updated successfully.",
             'success' => true,
@@ -78,11 +68,7 @@ class EmpLeaveBalanceController extends Controller
     }
     public function importbalance(Request $request)
     {
-        $request->validate([
-            'file' => 'required|mimes:xlsx,xls|max:20480',
-            'adminref' => 'required|string'
-        ]);
-        $file = $request->file('file');
+        $file = $request->file('balsheet');
         $filename = 'leave_balance_' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension();
         $path = $file->storeAs('/excelsheets', $filename);
         $fullpath = asset(Storage::url($path));
@@ -105,11 +91,13 @@ class EmpLeaveBalanceController extends Controller
                 ]
             );
         }
-        SysAdminLogs::create([
+        $logdata = [
             'refrence' => $request->adminref,
-            'log_action' => 'Leave Balance Update',
+            'log_action' => 'Leave Balance',
             'log_details' => "Imported Excel Sheet {$fullpath} to leave balance"
-        ]);
+        ];
+        $logadd = new SysAdminLogsController;
+        $logadd->addlog($logdata);
         return response()->json([
             'success' => true,
             'message' => "Leave balances updated from Excel Sheet and file saved successfully in {$fullpath}.",
