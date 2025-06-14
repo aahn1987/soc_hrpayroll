@@ -14,6 +14,7 @@ use App\Http\Controllers\EmpLeaveBalanceController;
 use App\Http\Controllers\EmpEvaluatedController;
 use App\Http\Controllers\AttPayrollController;
 use App\Http\Controllers\SysAdminLogsController;
+use App\Http\Controllers\EmpGeneralInfoController;
 use App\Http\Controllers\EmpContractHistoryController;
 use App\Http\Controllers\EmpDocumentsController;
 use App\Http\Controllers\TestController;
@@ -54,6 +55,10 @@ Route::post('/hr/profile', [IomPersonnelController::class, 'profile']);
 Route::post('/hr/loginifo', [IomPersonnelController::class, 'loginifo']);
 Route::post('/hr/account', [IomPersonnelController::class, 'account']);
 
+//Employees API - Lister
+Route::post('/employee/list/all', [EmpGeneralInfoController::class, 'showall']);
+Route::post('/employee/list/info', [EmpGeneralInfoController::class, 'showinfo']);
+
 //Employees API - History
 Route::post('/employee/history/show', [EmpContractHistoryController::class, 'showhistory']);
 Route::post('/employee/history/current', [EmpContractHistoryController::class, 'getcurrent']);
@@ -63,11 +68,25 @@ Route::post('/employee/history/clearcurrent', [EmpContractHistoryController::cla
 Route::post('/employee/history/delete', [EmpContractHistoryController::class, 'deletehistory']);
 Route::post('/employee/history/getcontend', [EmpContractHistoryController::class, 'contractend']);
 
-// Employees API - Documents
+//Employees API - Documents
 Route::post('/employee/documents/show', [EmpDocumentsController::class, 'listfiles']);
 Route::post('/employee/documents/add', [EmpDocumentsController::class, 'addfile']);
 Route::post('/employee/documents/delete', [EmpDocumentsController::class, 'deletefile']);
 Route::post('/employee/documents/download', [EmpDocumentsController::class, 'zipandownload']);
+Route::post('/employee/documents/dircetory', [EmpDocumentsController::class, 'createdirectory']);
+
+//Employee API - General Information
+Route::post('/employee/generalinfo/edit', [EmpGeneralInfoController::class, 'editgeneralinfo']);
+Route::post('/employee/generalinfo/contact', [EmpGeneralInfoController::class, 'editcontactinfo']);
+Route::post('/employee/generalinfo/status', [EmpGeneralInfoController::class, 'editstatus']);
+Route::post('/employee/generalinfo/new', [EmpGeneralInfoController::class, 'addgeneralinfo']);
+Route::post('/employee/jobinfo/edit', [EmpGeneralInfoController::class, 'editjobinfo']);
+Route::post('/employee/jobinfo/supervisors', [EmpGeneralInfoController::class, 'editsupervisors']);
+Route::post('/employee/jobinfo/new', [EmpGeneralInfoController::class, 'addjobinfo']);
+
+
+
+
 
 
 

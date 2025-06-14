@@ -3,47 +3,139 @@
 namespace App\Http\Controllers;
 
 use App\Models\EmpGeneralInfo;
+use App\Models\EmpShowAll;
+use App\Models\EmpShowInfo;
+use App\Models\EmpJobInformation;
 use Illuminate\Http\Request;
 
 class EmpGeneralInfoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function showall()
     {
-        //
+        $emplist = EmpShowAll::select('employee_reference', 'profilepicture', 'soc_reference', 'fullname', 'hub_name', 'duty_station', 'division', 'job_position')->get();
+        return response()->json($emplist);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function showinfo(Request $request)
     {
-        //
+        $emplist = EmpShowAll::where('employee_reference', $request->reference)->get();
+        return response()->json($emplist);
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(EmpGeneralInfo $empGeneralInfo)
+    public function editgeneralinfo(Request $request)
     {
-        //
+        $fields = [
+            'employee_reference',
+            'fullname',
+            'gender',
+            'marital_status',
+            'no_of_dependants',
+            'blood_group',
+            'date_of_birth',
+            'age',
+            'nationality',
+        ];
+        $data = [];
+        foreach ($fields as $field) {
+            $data[$field] = $request->input($field);
+        }
+        $employee_reference = $data['employee_reference'];
+        EmpGeneralInfo::where('employee_reference', $employee_reference)->update($data);
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, EmpGeneralInfo $empGeneralInfo)
+    public function editcontactinfo(Request $request)
     {
-        //
+        $fields = [
+            'employee_reference',
+            'emailaddress',
+            'phonenumber',
+            'homeaddress',
+        ];
+        $data = [];
+        foreach ($fields as $field) {
+            $data[$field] = $request->input($field);
+        }
+        $employee_reference = $data['employee_reference'];
+        EmpGeneralInfo::where('employee_reference', $employee_reference)->update($data);
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(EmpGeneralInfo $empGeneralInfo)
+    public function editstatus(Request $request)
     {
-        //
+        $fields = [
+            'employee_reference',
+            'employee_status',
+        ];
+        $data = [];
+        foreach ($fields as $field) {
+            $data[$field] = $request->input($field);
+        }
+        $employee_reference = $data['employee_reference'];
+        $sts = $data['employee_status'];
+        EmpGeneralInfo::whereIn('soc_reference', $employee_reference)->update(['employee_status' => $sts]);
+    }
+    public function addgeneralinfo($informationdata = [])
+    {
+        $fields = [
+            'employee_reference',
+            'fullname',
+            'gender',
+            'marital_status',
+            'no_of_dependants',
+            'blood_group',
+            'date_of_birth',
+            'age',
+            'nationality',
+            'emailaddress',
+            'phonenumber',
+            'homeaddress',
+        ];
+        $data = [];
+        foreach ($fields as $field) {
+            $data[$field] = $informationdata[$field];
+        }
+        EmpGeneralInfo::create($data);
+    }
+    public function editjobinfo(Request $request)
+    {
+        $fields = [
+            'soc_reference',
+            'svn_hired',
+            'employee_link',
+        ];
+        $data = [];
+        foreach ($fields as $field) {
+            $data[$field] = $request->input($field);
+        }
+        $employee_reference = $data['employee_reference'];
+        EmpJobInformation::whereIn('soc_reference', $employee_reference)->update($data);
+    }
+    public function editsupervisors(Request $request)
+    {
+        $fields = [
+            'soc_reference',
+            'supervisor_name',
+            'supervisor_email',
+            'head_of_sub_office_name',
+            'head_of_sub_office_email',
+        ];
+        $data = [];
+        foreach ($fields as $field) {
+            $data[$field] = $request->input($field);
+        }
+        $employee_reference = $data['employee_reference'];
+        EmpJobInformation::whereIn('soc_reference', $employee_reference)->update($data);
+    }
+    public function addjobinfo($informationdata = [])
+    {
+        $fields = [
+            'soc_reference',
+            'svn_hired',
+            'employee_link',
+            'supervisor_name',
+            'supervisor_email',
+            'head_of_sub_office_name',
+            'head_of_sub_office_email',
+        ];
+        $data = [];
+        foreach ($fields as $field) {
+            $data[$field] = $informationdata[$field];
+        }
+        EmpJobInformation::create($data);
     }
 }

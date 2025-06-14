@@ -12,6 +12,14 @@ class EmpDocumentsController extends Controller
         $fileslist = EmpDocuments::where('soc_reference', $requests->reference)->get();
         return response()->json($fileslist);
     }
+    public function createdirectory($directory = [])
+    {
+        $userDir = trim($directory['emp_reference'], '/');
+        $fullPath = "empfiles/{$userDir}";
+        if (!Storage::disk('public')->exists($fullPath)) {
+            Storage::disk('public')->makeDirectory($fullPath);
+        }
+    }
     public function addfile(Request $request)
     {
         $file = $request->file('user_file');
