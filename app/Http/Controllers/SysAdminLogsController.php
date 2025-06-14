@@ -29,7 +29,7 @@ class SysAdminLogsController extends Controller
     public function addlog($logsdata = [])
     {
         SysAdminLogs::create([
-            'refrence' => $logsdata['adminref'],
+            'refrence' => $logsdata['refrence'],
             'log_action' => $logsdata['log_action'],
             'log_details' => $logsdata['log_details']
         ]);
