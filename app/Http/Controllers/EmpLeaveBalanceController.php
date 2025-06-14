@@ -70,7 +70,7 @@ class EmpLeaveBalanceController extends Controller
     {
         $file = $request->file('balsheet');
         $filename = 'leave_balance_' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension();
-        $path = $file->storeAs('/excelsheets', $filename);
+        $path = $file->storeAs('/excelsheets', $filename, 'public');
         $fullpath = asset(Storage::url($path));
         $spreadsheet = IOFactory::load($file->getRealPath());
         $sheet = $spreadsheet->getActiveSheet();

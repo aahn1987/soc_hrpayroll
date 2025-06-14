@@ -18,7 +18,9 @@ class EmpDocuments extends Model
         'filename',
         'file_type',
         'file_viewer',
+        'file_icon',
         'file_url',
+        'file_path',
         'deleted',
     ];
 

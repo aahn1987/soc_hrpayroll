@@ -33,8 +33,8 @@ class SysHealthInsuranceController extends Controller
             $file = $request->file('filelink');
             $extension = $file->getClientOriginalExtension();
             $filename = $nfn . '.' . $extension;
-            $path = $file->storeAs('/healthinsurancefiles', $filename);
-            $fullUrl = asset(Storage::url($path));
+            $file->storeAs('/healthinsurancevideos', $filename, 'public');
+            $fullUrl = asset('storage/healthinsurancevideos/' . $filename);
 
             $healthinsurancefile->filelink = $fullUrl;
         }
@@ -61,8 +61,8 @@ class SysHealthInsuranceController extends Controller
             $file = $request->file('video_url');
             $extension = $file->getClientOriginalExtension();
             $filename = $nfn . '.' . $extension;
-            $path = $file->storeAs('/healthinsurancevideos', $filename);
-            $fullUrl = asset(Storage::url($path));
+            $file->storeAs('/healthinsurancevideos', $filename, 'public');
+            $fullUrl = asset('storage/healthinsurancevideos/' . $filename);
             $healthinsurance->video_url = $fullUrl;
         }
         $healthinsurance->text = $request->text;
@@ -86,8 +86,8 @@ class SysHealthInsuranceController extends Controller
         $file = $request->file('filelink');
         $extension = $file->getClientOriginalExtension();
         $filename = $nfn . '.' . $extension;
-        $path = $file->storeAs('/healthinsurancefiles', $filename);
-        $fullUrl = asset(Storage::url($path));
+        $file->storeAs('/healthinsurancefiles', $filename, 'public');
+        $fullUrl = asset('storage/healthinsurancefiles/' . $filename);
         SysHealthInsuranceFiles::create([
             'filename' => $request->filename,
             'langauge' => $request->langauge,

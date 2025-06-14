@@ -96,8 +96,8 @@ class SocAdminsController extends Controller
         $file = $request->file('profileimage');
         $extension = $file->getClientOriginalExtension();
         $filename = $request->refrence . '.' . $extension;
-        $path = $file->storeAs('/profileimages', $filename);
-        $fullUrl = asset(Storage::url($path));
+        $file->storeAs('/profileimages', $filename, 'public');
+        $fullUrl = asset('storage/profileimages/' . $filename);
         $socadmin->profileimage = $fullUrl;
         $socadmin->save();
         return response()->json([

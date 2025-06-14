@@ -15,6 +15,7 @@ use App\Http\Controllers\EmpEvaluatedController;
 use App\Http\Controllers\AttPayrollController;
 use App\Http\Controllers\SysAdminLogsController;
 use App\Http\Controllers\EmpContractHistoryController;
+use App\Http\Controllers\EmpDocumentsController;
 use App\Http\Controllers\TestController;
 
 // System Config API
@@ -62,8 +63,11 @@ Route::post('/employee/history/clearcurrent', [EmpContractHistoryController::cla
 Route::post('/employee/history/delete', [EmpContractHistoryController::class, 'deletehistory']);
 Route::post('/employee/history/getcontend', [EmpContractHistoryController::class, 'contractend']);
 
-
-
+// Employees API - Documents
+Route::post('/employee/documents/show', [EmpDocumentsController::class, 'listfiles']);
+Route::post('/employee/documents/add', [EmpDocumentsController::class, 'addfile']);
+Route::post('/employee/documents/delete', [EmpDocumentsController::class, 'deletefile']);
+Route::post('/employee/documents/download', [EmpDocumentsController::class, 'zipandownload']);
 
 
 

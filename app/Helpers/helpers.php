@@ -34,3 +34,53 @@ if (!function_exists('clear_string')) {
         return strtolower(preg_replace('/[^a-zA-Z0-9]/', '', $string));
     }
 }
+if (!function_exists('getFileType')) {
+    function getFileType($ext)
+    {
+        return match (strtolower($ext)) {
+            'gif', 'png', 'jpg', 'jpeg' => 'Image',
+            'doc', 'docx' => 'Document',
+            'xls', 'xlsx' => 'Spreadsheet',
+            'ppt', 'pptx', 'ppsx' => 'Presentation',
+            'pdf' => 'PDF',
+            'txt' => 'Text File',
+            'zip', 'rar' => 'Compressed File',
+            'mp4' => 'Video',
+            'mp3' => 'Audio',
+            default => 'Unknown',
+        };
+    }
+}
+if (!function_exists('getFileIcon')) {
+    function getFileIcon($ext)
+    {
+        return match (strtolower($ext)) {
+            'gif', 'png', 'jpg', 'jpeg' => 'image',
+            'doc', 'docx' => 'document',
+            'xls', 'xlsx' => 'spreadsheet',
+            'ppt', 'pptx', 'ppsx' => 'presentation',
+            'pdf' => 'pdf',
+            'txt' => 'text',
+            'zip', 'rar' => 'zip',
+            'mp4' => 'video',
+            'mp3' => 'audio',
+            default => 'file',
+        };
+    }
+}
+if (!function_exists('generateViewerHtml')) {
+    function generateViewerHtml($ext, $url)
+    {
+        $ext = strtolower($ext);
+        return match ($ext) {
+            'gif', 'png', 'jpg', 'jpeg' => '<img class="img-fluid" src="' . $url . '" alt="File">',
+            'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'ppsx' =>
+            '<iframe class="w-100 vh-50" src="https://view.officeapps.live.com/op/view.aspx?src=' . urlencode($url) . '" frameborder="0"></iframe>',
+            'pdf', 'txt' => '<iframe class="w-100 vh-50" src="' . $url . '" frameborder="0"></iframe>',
+            'zip', 'rar' => '<a target="_blank" class="navlink" href="' . $url . '">Download File</a>',
+            'mp4' => '<video class="w-100 vh-50" controls><source src="' . $url . '" type="video/mp4"></video>',
+            'mp3' => '<audio class="w-100" controls><source src="' . $url . '"></audio>',
+            default => '<a href="' . $url . '" target="_blank">Download File</a>',
+        };
+    }
+}

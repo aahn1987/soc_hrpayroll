@@ -94,8 +94,8 @@ class IOMPersonnelController extends Controller
         $file = $request->file('profileimage');
         $extension = $file->getClientOriginalExtension();
         $filename = $request->refrence . '.' . $extension;
-        $path = $file->storeAs('/profileimages', $filename);
-        $fullUrl = asset(Storage::url($path));
+        $file->storeAs('/profileimages', $filename, 'public');
+        $fullUrl = asset('storage/profileimages/' . $filename);
         $personnel->profileimage = $fullUrl;
         $personnel->save();
         return response()->json([
