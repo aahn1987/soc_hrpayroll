@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Controllers\DataSystemDataController;
+use App\Models\DataDutyStation;
 use App\Models\AttWBS;
 use Illuminate\Http\Request;
 
@@ -70,5 +71,26 @@ class TestController extends Controller
             'data' => $created,
             'message' => 'WBS record created successfully.',
         ]);
+    }
+    public function getOrCreateDutyStationId(Request $request)
+    {
+        $request->validate([
+            'duty_station' => 'required|string'
+        ]);
+
+        $originalName = $request->duty_station;
+        $normalizedName = clear_string($originalName);
+        $existing = DataDutyStation::where('deleted', 0)->where('normalized', $normalizedName)->get();
+        $matched = $existing->firstWhere('normalized', $normalizedName);
+
+        if ($matched) {
+            return $matched->id;
+        }
+        $new = new DataDutyStation();
+        $new->duty_station = $originalName;
+        $new->normalized = $normalizedName;
+        $new->deleted = 0;
+        $new->save();
+        return $new->id;
     }
 }

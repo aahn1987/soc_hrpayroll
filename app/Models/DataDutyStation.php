@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class DataDutyStation extends Model
 {
     protected $table = 'data_dutystations';
-    protected $fillable = ['duty_station'];
+    protected $fillable = ['duty_station', 'normalized'];
 }

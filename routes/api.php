@@ -155,3 +155,4 @@ Route::post('/logs/admin/clear', [SysAdminLogsController::class, 'clearlogs']);
 
 // Test API
 Route::get('/test/listds', [TestController::class, 'listds']);
+Route::post('/test/normalize', [TestController::class, 'getOrCreateDutyStationId']);

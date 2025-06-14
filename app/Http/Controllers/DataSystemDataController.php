@@ -89,4 +89,164 @@ class DataSystemDataController extends Controller
         $DataYesNoTable = DataYesNoTable::select('id', 'yes_or_no')->where('deleted', 0)->get();
         return response()->json($DataYesNoTable);
     }
+    public function contractcategoriesid($item)
+    {
+        $originalName = $item;
+        $normalizedName = clear_string($originalName);
+        $existing = DataContractCategory::where('deleted', 0)->where('normalized', $normalizedName)->get();
+        $matched = $existing->firstWhere('normalized', $normalizedName);
+
+        if ($matched) {
+            return $matched->id;
+        }
+        $new = new DataContractCategory();
+        $new->duty_station = $originalName;
+        $new->normalized = $normalizedName;
+        $new->deleted = 0;
+        $new->save();
+        return $new->id;
+    }
+    public function contracttypeid($item)
+    {
+        $originalName = $item;
+        $normalizedName = clear_string($originalName);
+        $existing = DataContractType::where('deleted', 0)->where('normalized', $normalizedName)->get();
+        $matched = $existing->firstWhere('normalized', $normalizedName);
+
+        if ($matched) {
+            return $matched->id;
+        }
+        $new = new DataContractType();
+        $new->duty_station = $originalName;
+        $new->normalized = $normalizedName;
+        $new->deleted = 0;
+        $new->save();
+        return $new->id;
+    }
+    public function dangerpayid($item)
+    {
+        $originalName = $item;
+        $normalizedName = clear_string($originalName);
+        $existing = DataDangerPay::where('deleted', 0)->where('normalized', $normalizedName)->get();
+        $matched = $existing->firstWhere('normalized', $normalizedName);
+        return $matched->id;
+    }
+    public function divisonid($item)
+    {
+        $originalName = $item;
+        $normalizedName = clear_string($originalName);
+        $existing = DataDivison::where('deleted', 0)->where('normalized', $normalizedName)->get();
+        $matched = $existing->firstWhere('normalized', $normalizedName);
+
+        if ($matched) {
+            return $matched->id;
+        }
+        $new = new DataDivison();
+        $new->duty_station = $originalName;
+        $new->normalized = $normalizedName;
+        $new->deleted = 0;
+        $new->save();
+        return $new->id;
+    }
+    public function dutystationid($item)
+    {
+        $originalName = $item;
+        $normalizedName = clear_string($originalName);
+        $existing = DataDutyStation::where('deleted', 0)->where('normalized', $normalizedName)->get();
+        $matched = $existing->firstWhere('normalized', $normalizedName);
+
+        if ($matched) {
+            return $matched->id;
+        }
+        $new = new DataDutyStation();
+        $new->duty_station = $originalName;
+        $new->normalized = $normalizedName;
+        $new->deleted = 0;
+        $new->save();
+        return $new->id;
+    }
+    public function genderid($item)
+    {
+        $originalName = $item;
+        $normalizedName = clear_string($originalName);
+        $existing = DataDutyStation::where('deleted', 0)->where('normalized', $normalizedName)->get();
+        $matched = $existing->firstWhere('normalized', $normalizedName);
+        return $matched->id;
+    }
+    public function gradeid($item)
+    {
+        $originalName = $item;
+        $normalizedName = clear_string($originalName);
+        $existing = DataGrades::where('deleted', 0)->where('normalized', $normalizedName)->get();
+        $matched = $existing->firstWhere('normalized', $normalizedName);
+
+        if ($matched) {
+            return $matched->id;
+        }
+        $new = new DataGrades();
+        $new->duty_station = $originalName;
+        $new->normalized = $normalizedName;
+        $new->deleted = 0;
+        $new->save();
+        return $new->id;
+    }
+    public function hubid($item)
+    {
+        $originalName = $item;
+        $normalizedName = clear_string($originalName);
+        $existing = DataHubs::where('deleted', 0)->where('normalized', $normalizedName)->get();
+        $matched = $existing->firstWhere('normalized', $normalizedName);
+
+        if ($matched) {
+            return $matched->id;
+        }
+        $new = new DataHubs();
+        $new->duty_station = $originalName;
+        $new->normalized = $normalizedName;
+        $new->deleted = 0;
+        $new->save();
+        return $new->id;
+    }
+    public function maritalstatusid($item)
+    {
+        $originalName = $item;
+        $normalizedName = clear_string($originalName);
+        $existing = DataMaritalStatus::where('deleted', 0)->where('normalized', $normalizedName)->get();
+        $matched = $existing->firstWhere('normalized', $normalizedName);
+        return $matched->id;
+    }
+    public function programmeid($item)
+    {
+        $originalName = $item;
+        $normalizedName = clear_string($originalName);
+        $existing = DataProgramme::where('deleted', 0)->where('normalized', $normalizedName)->get();
+        $matched = $existing->firstWhere('normalized', $normalizedName);
+
+        if ($matched) {
+            return $matched->id;
+        }
+        $new = new DataProgramme();
+        $new->duty_station = $originalName;
+        $new->normalized = $normalizedName;
+        $new->deleted = 0;
+        $new->save();
+        return $new->id;
+    }
+    public function staffgroupingid($item)
+    {
+        $originalName = $item;
+        $normalizedName = clear_string($originalName);
+        $existing = DataStaffGrouping::where('deleted', 0)->where('normalized', $normalizedName)->get();
+        $matched = $existing->firstWhere('normalized', $normalizedName);
+
+        if ($matched) {
+            return $matched->id;
+        }
+        $new = new DataStaffGrouping();
+        $new->duty_station = $originalName;
+        $new->normalized = $normalizedName;
+        $new->deleted = 0;
+        $new->save();
+        return $new->id;
+    }
 }

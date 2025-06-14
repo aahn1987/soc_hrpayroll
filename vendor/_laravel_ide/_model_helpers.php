@@ -1526,10 +1526,12 @@ namespace App\Models {
      * @property bool $deleted
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon $created_at
+     * @property string $normalized
      * @property string $contract_category
      * @property int $id
      * @method static \Illuminate\Database\Eloquent\Builder<DataContractCategory>|DataContractCategory whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataContractCategory>|DataContractCategory whereContractCategory($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<DataContractCategory>|DataContractCategory whereNormalized($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataContractCategory>|DataContractCategory whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataContractCategory>|DataContractCategory whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataContractCategory>|DataContractCategory whereDeleted($value)
@@ -1835,12 +1837,12 @@ namespace App\Models {
      * @property bool $deleted
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon $created_at
-     * @property string $normalized_contract
+     * @property string $normalized
      * @property string $contract_type
      * @property int $id
      * @method static \Illuminate\Database\Eloquent\Builder<DataContractType>|DataContractType whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataContractType>|DataContractType whereContractType($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<DataContractType>|DataContractType whereNormalizedContract($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<DataContractType>|DataContractType whereNormalized($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataContractType>|DataContractType whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataContractType>|DataContractType whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataContractType>|DataContractType whereDeleted($value)
@@ -2455,12 +2457,12 @@ namespace App\Models {
      * @property bool $deleted
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon $created_at
-     * @property string $normalized_division
+     * @property string $normalized
      * @property string $division
      * @property int $id
      * @method static \Illuminate\Database\Eloquent\Builder<DataDivison>|DataDivison whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataDivison>|DataDivison whereDivision($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<DataDivison>|DataDivison whereNormalizedDivision($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<DataDivison>|DataDivison whereNormalized($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataDivison>|DataDivison whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataDivison>|DataDivison whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataDivison>|DataDivison whereDeleted($value)
@@ -2766,12 +2768,12 @@ namespace App\Models {
      * @property bool $deleted
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon $created_at
-     * @property string|null $normalized_duty_station
+     * @property string|null $normalized
      * @property string $duty_station
      * @property int $id
      * @method static \Illuminate\Database\Eloquent\Builder<DataDutyStation>|DataDutyStation whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataDutyStation>|DataDutyStation whereDutyStation($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<DataDutyStation>|DataDutyStation whereNormalizedDutyStation($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<DataDutyStation>|DataDutyStation whereNormalized($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataDutyStation>|DataDutyStation whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataDutyStation>|DataDutyStation whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataDutyStation>|DataDutyStation whereDeleted($value)
@@ -3388,10 +3390,12 @@ namespace App\Models {
      * @property bool $deleted
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon $created_at
+     * @property string $normalized
      * @property string $gender_type
      * @property int $id
      * @method static \Illuminate\Database\Eloquent\Builder<DataGenders>|DataGenders whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataGenders>|DataGenders whereGenderType($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<DataGenders>|DataGenders whereNormalized($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataGenders>|DataGenders whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataGenders>|DataGenders whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataGenders>|DataGenders whereDeleted($value)
@@ -3697,12 +3701,12 @@ namespace App\Models {
      * @property bool $deleted
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon $created_at
-     * @property string $normalized_grade
+     * @property string $normalized
      * @property string $grade_equivalent
      * @property int $id
      * @method static \Illuminate\Database\Eloquent\Builder<DataGrades>|DataGrades whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataGrades>|DataGrades whereGradeEquivalent($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<DataGrades>|DataGrades whereNormalizedGrade($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<DataGrades>|DataGrades whereNormalized($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataGrades>|DataGrades whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataGrades>|DataGrades whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataGrades>|DataGrades whereDeleted($value)
@@ -4008,10 +4012,12 @@ namespace App\Models {
      * @property bool $deleted
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon $created_at
+     * @property string $normalized
      * @property string $hub_name
      * @property int $id
      * @method static \Illuminate\Database\Eloquent\Builder<DataHubs>|DataHubs whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataHubs>|DataHubs whereHubName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<DataHubs>|DataHubs whereNormalized($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataHubs>|DataHubs whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataHubs>|DataHubs whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataHubs>|DataHubs whereDeleted($value)
@@ -4626,10 +4632,12 @@ namespace App\Models {
      * @property bool $deleted
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon $created_at
+     * @property string $normalized
      * @property string $martial_statue_type
      * @property int $id
      * @method static \Illuminate\Database\Eloquent\Builder<DataMaritalStatus>|DataMaritalStatus whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataMaritalStatus>|DataMaritalStatus whereMartialStatueType($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<DataMaritalStatus>|DataMaritalStatus whereNormalized($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataMaritalStatus>|DataMaritalStatus whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataMaritalStatus>|DataMaritalStatus whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataMaritalStatus>|DataMaritalStatus whereDeleted($value)
@@ -4935,10 +4943,12 @@ namespace App\Models {
      * @property bool $deleted
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon $created_at
+     * @property string $normalized
      * @property string $payment_type
      * @property int $id
      * @method static \Illuminate\Database\Eloquent\Builder<DataPaymentTypes>|DataPaymentTypes whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataPaymentTypes>|DataPaymentTypes wherePaymentType($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<DataPaymentTypes>|DataPaymentTypes whereNormalized($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataPaymentTypes>|DataPaymentTypes whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataPaymentTypes>|DataPaymentTypes whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataPaymentTypes>|DataPaymentTypes whereDeleted($value)
@@ -5244,10 +5254,12 @@ namespace App\Models {
      * @property bool $deleted
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon $created_at
+     * @property string $normalized
      * @property string $programme
      * @property int $id
      * @method static \Illuminate\Database\Eloquent\Builder<DataProgramme>|DataProgramme whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataProgramme>|DataProgramme whereProgramme($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<DataProgramme>|DataProgramme whereNormalized($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataProgramme>|DataProgramme whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataProgramme>|DataProgramme whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataProgramme>|DataProgramme whereDeleted($value)
@@ -5553,10 +5565,12 @@ namespace App\Models {
      * @property bool $deleted
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon $created_at
+     * @property string $normalized
      * @property string $staff_grouping
      * @property int $id
      * @method static \Illuminate\Database\Eloquent\Builder<DataStaffGrouping>|DataStaffGrouping whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataStaffGrouping>|DataStaffGrouping whereStaffGrouping($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<DataStaffGrouping>|DataStaffGrouping whereNormalized($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataStaffGrouping>|DataStaffGrouping whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataStaffGrouping>|DataStaffGrouping whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataStaffGrouping>|DataStaffGrouping whereDeleted($value)
