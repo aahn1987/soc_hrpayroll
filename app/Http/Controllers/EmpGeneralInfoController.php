@@ -72,7 +72,9 @@ class EmpGeneralInfoController extends Controller
     {
         $fields = [
             'employee_reference',
+            'soc_reference',
             'fullname',
+            'profilepicture',
             'gender',
             'marital_status',
             'no_of_dependants',

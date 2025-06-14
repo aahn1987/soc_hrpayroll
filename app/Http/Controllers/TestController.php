@@ -86,11 +86,7 @@ class TestController extends Controller
         if ($matched) {
             return $matched->id;
         }
-        $new = new DataDutyStation();
-        $new->duty_station = $originalName;
-        $new->normalized = $normalizedName;
-        $new->deleted = 0;
-        $new->save();
-        return $new->id;
+        return 1;
+
     }
 }

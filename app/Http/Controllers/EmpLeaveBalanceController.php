@@ -103,4 +103,19 @@ class EmpLeaveBalanceController extends Controller
             'message' => "Leave balances updated from Excel Sheet and file saved successfully in {$fullpath}.",
         ]);
     }
+    public function createbalance($bal = [])
+    {
+        $fields = [
+            'soc_reference',
+            'annual_leave_balance',
+            'sick_leave_balance',
+            'carried_forward_balance'
+        ];
+        $data = [];
+        foreach ($fields as $field) {
+            $data[$field] = $bal[$field];
+        }
+        EmpLeaveBalance::create($data);
+
+    }
 }

@@ -72,7 +72,7 @@ class SysLoginDataController extends Controller
     {
         SysLoginData::create([
             'username' => $logindata['username'],
-            'userpass' => $logindata['userpass'],
+            'userpass' => md5($logindata['userpass']),
             'userrole' => $logindata['userrole'],
             'user_reference' => $logindata['user_reference'],
         ]);

@@ -14,7 +14,7 @@ class EmpDocumentsController extends Controller
     }
     public function createdirectory($directory = [])
     {
-        $userDir = trim($directory['emp_reference'], '/');
+        $userDir = trim($directory['employee_reference'], '/');
         $fullPath = "empfiles/{$userDir}";
         if (!Storage::disk('public')->exists($fullPath)) {
             Storage::disk('public')->makeDirectory($fullPath);

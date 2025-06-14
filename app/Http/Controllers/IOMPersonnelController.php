@@ -112,7 +112,7 @@ class IOMPersonnelController extends Controller
             'fullname' => $request->fullname,
             'emailaddress' => $request->emailaddress,
             'phonenumber' => $request->phonenumber,
-            'profileimage' => asset(Storage::url('/profileimages/default.jpg')),
+            'profileimage' => asset(Storage::url('/profileimages/hr.jpg')),
         ]);
         $logindata = [
             'username' => $request->username,

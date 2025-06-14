@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SysLoginDataController;
 use App\Http\Controllers\IOMPersonnelController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\SysHealthInsuranceController;
 use App\Http\Controllers\DataSystemDataController;
 use App\Http\Controllers\EmpDataAndStatusController;
 use App\Http\Controllers\EmpLeaveBalanceController;
+use App\Http\Controllers\EmpObjectivesController;
 use App\Http\Controllers\EmpEvaluatedController;
 use App\Http\Controllers\AttPayrollController;
 use App\Http\Controllers\SysAdminLogsController;
@@ -55,11 +57,11 @@ Route::post('/hr/profile', [IomPersonnelController::class, 'profile']);
 Route::post('/hr/loginifo', [IomPersonnelController::class, 'loginifo']);
 Route::post('/hr/account', [IomPersonnelController::class, 'account']);
 
-//Employees API - Lister
+// Employees API - Lister
 Route::post('/employee/list/all', [EmpGeneralInfoController::class, 'showall']);
 Route::post('/employee/list/info', [EmpGeneralInfoController::class, 'showinfo']);
 
-//Employees API - History
+// Employees API - History
 Route::post('/employee/history/show', [EmpContractHistoryController::class, 'showhistory']);
 Route::post('/employee/history/current', [EmpContractHistoryController::class, 'getcurrent']);
 Route::post('/employee/history/new', [EmpContractHistoryController::class, 'addhistory']);
@@ -68,14 +70,14 @@ Route::post('/employee/history/clearcurrent', [EmpContractHistoryController::cla
 Route::post('/employee/history/delete', [EmpContractHistoryController::class, 'deletehistory']);
 Route::post('/employee/history/getcontend', [EmpContractHistoryController::class, 'contractend']);
 
-//Employees API - Documents
+// Employees API - Documents
 Route::post('/employee/documents/show', [EmpDocumentsController::class, 'listfiles']);
 Route::post('/employee/documents/add', [EmpDocumentsController::class, 'addfile']);
 Route::post('/employee/documents/delete', [EmpDocumentsController::class, 'deletefile']);
 Route::post('/employee/documents/download', [EmpDocumentsController::class, 'zipandownload']);
 Route::post('/employee/documents/directory', [EmpDocumentsController::class, 'createdirectory']);
 
-//Employee API - General Information
+// Employee API - General Information
 Route::post('/employee/generalinfo/edit', [EmpGeneralInfoController::class, 'editgeneralinfo']);
 Route::post('/employee/generalinfo/contact', [EmpGeneralInfoController::class, 'editcontactinfo']);
 Route::post('/employee/generalinfo/status', [EmpGeneralInfoController::class, 'editstatus']);
@@ -84,11 +86,16 @@ Route::post('/employee/jobinfo/edit', [EmpGeneralInfoController::class, 'editjob
 Route::post('/employee/jobinfo/supervisors', [EmpGeneralInfoController::class, 'editsupervisors']);
 Route::post('/employee/jobinfo/new', [EmpGeneralInfoController::class, 'addjobinfo']);
 
-//Employee API - Salary
+// Employees API - Salary
 Route::post('/employee/salary/show', [EmpSalaryInformationController::class, 'getsalary']);
 Route::post('/employee/salary/edit', [EmpSalaryInformationController::class, 'editsalary']);
 Route::post('/employee/salary/new', [EmpSalaryInformationController::class, 'addsalary']);
 
+// Employees API - Objective
+Route::post('employee/objective/new', [EmpObjectivesController::class, 'creatobjective']);
+
+// Employees API - Add New Employee
+Route::post('employee/new', [EmpDataAndStatusController::class, 'newemployee']);
 
 
 
@@ -102,12 +109,6 @@ Route::post('/payroll/show', [AttPayrollController::class, 'show']);
 // Employees Data and Status API
 Route::post('/emps/activate', [EmpDataAndStatusController::class, 'statuschanger']);
 
-// Emplyees Leaves & Leave Balance API
-Route::post('/leave/balance/increase', [EmpLeaveBalanceController::class, 'increasebalance']);
-Route::post('/leave/balance/update', [EmpLeaveBalanceController::class, 'increasebalanceemp']);
-Route::post('/leave/balance/show', [EmpLeaveBalanceController::class, 'show']);
-Route::post('/leave/balance/import', [EmpLeaveBalanceController::class, 'importbalance']);
-
 // Emplyees Evaluations And Objectives Stats API
 Route::post('/evaluations/stats/evaluated', [EmpEvaluatedController::class, 'evaluated']);
 Route::post('/evaluations/stats/notevaluated', [EmpEvaluatedController::class, 'notevaluated']);
@@ -115,6 +116,12 @@ Route::post('/evaluations/stats/list', [EmpEvaluatedController::class, 'evaluati
 Route::post('/evaluations/stats/nobjectives', [EmpEvaluatedController::class, 'nobjectives']);
 Route::post('/evaluations/stats/pendingbjectives', [EmpEvaluatedController::class, 'pendingbjectives']);
 Route::post('/evaluations/stats/approvedbjectives', [EmpEvaluatedController::class, 'approvedbjectives']);
+
+// Emplyees Leave Balance API
+Route::post('/leave/balance/increase', [EmpLeaveBalanceController::class, 'increasebalance']);
+Route::post('/leave/balance/update', [EmpLeaveBalanceController::class, 'increasebalanceemp']);
+Route::post('/leave/balance/show', [EmpLeaveBalanceController::class, 'show']);
+Route::post('/leave/balance/import', [EmpLeaveBalanceController::class, 'importbalance']);
 
 // System Data API
 Route::get('/data/contractcategories', [DataSystemDataController::class, 'contractcategories']);

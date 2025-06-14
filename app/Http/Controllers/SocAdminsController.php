@@ -115,7 +115,7 @@ class SocAdminsController extends Controller
             'jobpostition' => $request->jobpostition,
             'emailaddress' => $request->emailaddress,
             'phonenumber' => $request->phonenumber,
-            'profileimage' => asset(Storage::url('profileimages/default.jpg')),
+            'profileimage' => asset(Storage::url('profileimages/admin.jpg')),
         ]);
         SocAdminPrivilegs::create([
             'refrence' => $reference,

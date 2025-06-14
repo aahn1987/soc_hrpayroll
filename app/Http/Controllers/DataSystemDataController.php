@@ -129,7 +129,10 @@ class DataSystemDataController extends Controller
         $normalizedName = clear_string($originalName);
         $existing = DataDangerPay::where('deleted', 0)->where('normalized', $normalizedName)->get();
         $matched = $existing->firstWhere('normalized', $normalizedName);
-        return $matched->id;
+        if ($matched) {
+            return $matched->id;
+        }
+        return 1;
     }
     public function divisonid($item)
     {
@@ -171,7 +174,10 @@ class DataSystemDataController extends Controller
         $normalizedName = clear_string($originalName);
         $existing = DataDutyStation::where('deleted', 0)->where('normalized', $normalizedName)->get();
         $matched = $existing->firstWhere('normalized', $normalizedName);
-        return $matched->id;
+        if ($matched) {
+            return $matched->id;
+        }
+        return 1;
     }
     public function gradeid($item)
     {
@@ -213,7 +219,10 @@ class DataSystemDataController extends Controller
         $normalizedName = clear_string($originalName);
         $existing = DataMaritalStatus::where('deleted', 0)->where('normalized', $normalizedName)->get();
         $matched = $existing->firstWhere('normalized', $normalizedName);
-        return $matched->id;
+        if ($matched) {
+            return $matched->id;
+        }
+        return 1;
     }
     public function programmeid($item)
     {
