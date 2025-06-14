@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SysLoginDataController;
 use App\Http\Controllers\IOMPersonnelController;
@@ -17,6 +16,7 @@ use App\Http\Controllers\SysAdminLogsController;
 use App\Http\Controllers\EmpGeneralInfoController;
 use App\Http\Controllers\EmpContractHistoryController;
 use App\Http\Controllers\EmpDocumentsController;
+use App\Http\Controllers\EmpSalaryInformationController;
 use App\Http\Controllers\TestController;
 
 // System Config API
@@ -73,7 +73,7 @@ Route::post('/employee/documents/show', [EmpDocumentsController::class, 'listfil
 Route::post('/employee/documents/add', [EmpDocumentsController::class, 'addfile']);
 Route::post('/employee/documents/delete', [EmpDocumentsController::class, 'deletefile']);
 Route::post('/employee/documents/download', [EmpDocumentsController::class, 'zipandownload']);
-Route::post('/employee/documents/dircetory', [EmpDocumentsController::class, 'createdirectory']);
+Route::post('/employee/documents/directory', [EmpDocumentsController::class, 'createdirectory']);
 
 //Employee API - General Information
 Route::post('/employee/generalinfo/edit', [EmpGeneralInfoController::class, 'editgeneralinfo']);
@@ -84,7 +84,10 @@ Route::post('/employee/jobinfo/edit', [EmpGeneralInfoController::class, 'editjob
 Route::post('/employee/jobinfo/supervisors', [EmpGeneralInfoController::class, 'editsupervisors']);
 Route::post('/employee/jobinfo/new', [EmpGeneralInfoController::class, 'addjobinfo']);
 
-
+//Employee API - Salary
+Route::post('/employee/salary/show', [EmpSalaryInformationController::class, 'getsalary']);
+Route::post('/employee/salary/edit', [EmpSalaryInformationController::class, 'editsalary']);
+Route::post('/employee/salary/new', [EmpSalaryInformationController::class, 'addsalary']);
 
 
 

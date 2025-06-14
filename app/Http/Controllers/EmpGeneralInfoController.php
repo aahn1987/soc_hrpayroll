@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\EmpGeneralInfo;
 use App\Models\EmpShowAll;
-use App\Models\EmpShowInfo;
 use App\Models\EmpJobInformation;
 use Illuminate\Http\Request;
 
@@ -118,7 +117,7 @@ class EmpGeneralInfoController extends Controller
         foreach ($fields as $field) {
             $data[$field] = $request->input($field);
         }
-        $employee_reference = $data['employee_reference'];
+        $employee_reference = $data['soc_reference'];
         EmpJobInformation::whereIn('soc_reference', $employee_reference)->update($data);
     }
     public function addjobinfo($informationdata = [])
