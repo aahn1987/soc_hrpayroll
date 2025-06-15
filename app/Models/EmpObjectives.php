@@ -14,7 +14,6 @@ class EmpObjectives extends Model
 
     protected $fillable = [
         'soc_reference',
-        'editable',
         'supervisor_name',
         'supervisor_email',
         'supervisor_approval',

@@ -9833,36 +9833,6 @@ namespace App\Models {
     /**
      * App\Models\EmpListObjectives
      *
-     * @property bool $employee_status
-     * @property string $objective_token
-     * @property string $objective_text
-     * @property bool $head_of_sub_office_approval
-     * @property string|null $head_of_sub_office_email
-     * @property string|null $head_of_sub_office_name
-     * @property bool $with_head_of_sub_office
-     * @property bool $supervisor_approval
-     * @property string|null $supervisor_email
-     * @property string|null $supervisor_name
-     * @property bool $editable
-     * @property string|null $emailaddress
-     * @property string $fullname
-     * @property string $soc_reference
-     * @property int $id
-     * @method static \Illuminate\Database\Eloquent\Builder<EmpListObjectives>|EmpListObjectives whereId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<EmpListObjectives>|EmpListObjectives whereSocReference($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<EmpListObjectives>|EmpListObjectives whereFullname($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<EmpListObjectives>|EmpListObjectives whereEmailaddress($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<EmpListObjectives>|EmpListObjectives whereEditable($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<EmpListObjectives>|EmpListObjectives whereSupervisorName($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<EmpListObjectives>|EmpListObjectives whereSupervisorEmail($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<EmpListObjectives>|EmpListObjectives whereSupervisorApproval($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<EmpListObjectives>|EmpListObjectives whereWithHeadOfSubOffice($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<EmpListObjectives>|EmpListObjectives whereHeadOfSubOfficeName($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<EmpListObjectives>|EmpListObjectives whereHeadOfSubOfficeEmail($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<EmpListObjectives>|EmpListObjectives whereHeadOfSubOfficeApproval($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<EmpListObjectives>|EmpListObjectives whereObjectiveText($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<EmpListObjectives>|EmpListObjectives whereObjectiveToken($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<EmpListObjectives>|EmpListObjectives whereEmployeeStatus($value)
      * @method static \Illuminate\Database\Eloquent\Builder<EmpListObjectives>|EmpListObjectives newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<EmpListObjectives>|EmpListObjectives newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<EmpListObjectives>|EmpListObjectives query()
@@ -10174,12 +10144,10 @@ namespace App\Models {
      * @property boolean $supervisor_approval
      * @property string|null $supervisor_email
      * @property string|null $supervisor_name
-     * @property boolean $editable
      * @property string $soc_reference
      * @property int $id
      * @method static \Illuminate\Database\Eloquent\Builder<EmpObjectives>|EmpObjectives whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<EmpObjectives>|EmpObjectives whereSocReference($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<EmpObjectives>|EmpObjectives whereEditable($value)
      * @method static \Illuminate\Database\Eloquent\Builder<EmpObjectives>|EmpObjectives whereSupervisorName($value)
      * @method static \Illuminate\Database\Eloquent\Builder<EmpObjectives>|EmpObjectives whereSupervisorEmail($value)
      * @method static \Illuminate\Database\Eloquent\Builder<EmpObjectives>|EmpObjectives whereSupervisorApproval($value)

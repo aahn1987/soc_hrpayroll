@@ -21,7 +21,7 @@ class ResetPasswordMail extends Mailable
 
     public function build()
     {
-        return $this->from('passwords@demomailtrap.co', 'SOC Portal Accounts')
+        return $this->from('passwords@my-soc.org', 'SOC Portal Accounts')
             ->subject('Your New Login Details For SOC Portal')
             ->view('emails.reset_password');
     }

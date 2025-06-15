@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SysLoginDataController;
 use App\Http\Controllers\IOMPersonnelController;
@@ -20,6 +19,7 @@ use App\Http\Controllers\EmpContractHistoryController;
 use App\Http\Controllers\EmpDocumentsController;
 use App\Http\Controllers\EmpSalaryInformationController;
 use App\Http\Controllers\EmpTokensController;
+use App\Http\Controllers\DataEvaluationScheduleController;
 use App\Http\Controllers\TestController;
 
 // System Config API
@@ -99,6 +99,12 @@ Route::post('employee/objective/new', [EmpObjectivesController::class, 'creatobj
 Route::post('employee/new', [EmpDataAndStatusController::class, 'newemployee']);
 Route::post('employee/import', [EmpDataAndStatusController::class, 'importdata']);
 
+// EMployee API - Objective
+Route::post('/objective/byemp', [EmpObjectivesController::class, 'getobjectivebyemp']);
+Route::post('/objective/bytoken', [EmpObjectivesController::class, 'getobjectivebytoken']);
+Route::post('/objective/edit', [EmpObjectivesController::class, 'editobjective']);
+Route::post('/objective/approve/supervisor', [EmpObjectivesController::class, 'approvebysupervisor']);
+Route::post('/objective/approve/headofsuboffice', [EmpObjectivesController::class, 'approvebyheadofsuboffice']);
 
 
 //Payroll API
@@ -117,6 +123,7 @@ Route::post('/evaluations/stats/list', [EmpEvaluatedController::class, 'evaluati
 Route::post('/evaluations/stats/nobjectives', [EmpEvaluatedController::class, 'nobjectives']);
 Route::post('/evaluations/stats/pendingbjectives', [EmpEvaluatedController::class, 'pendingbjectives']);
 Route::post('/evaluations/stats/approvedbjectives', [EmpEvaluatedController::class, 'approvedbjectives']);
+Route::post('/evaluations/scehdule/create', [DataEvaluationScheduleController::class, 'newsched']);
 
 // Emplyees Leave Balance API
 Route::post('/leave/balance/increase', [EmpLeaveBalanceController::class, 'increasebalance']);
