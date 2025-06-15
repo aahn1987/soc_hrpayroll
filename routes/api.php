@@ -19,6 +19,7 @@ use App\Http\Controllers\EmpGeneralInfoController;
 use App\Http\Controllers\EmpContractHistoryController;
 use App\Http\Controllers\EmpDocumentsController;
 use App\Http\Controllers\EmpSalaryInformationController;
+use App\Http\Controllers\EmpTokensController;
 use App\Http\Controllers\TestController;
 
 // System Config API
@@ -159,6 +160,10 @@ Route::post('/training/new', [SysTrainingController::class, 'new']);
 Route::post('/logs/admin/list', [SysAdminLogsController::class, 'alllogs']);
 Route::post('/logs/admin/byadmin', [SysAdminLogsController::class, 'logsbyadmin']);
 Route::post('/logs/admin/clear', [SysAdminLogsController::class, 'clearlogs']);
+
+// FireBase Token
+Route::post('/emplyee/token/add', [EmpTokensController::class, 'store']);
+Route::post('/emplyee/token/remove', [EmpTokensController::class, 'destroy']);
 
 // Test API
 Route::get('/test/listds', [TestController::class, 'listds']);

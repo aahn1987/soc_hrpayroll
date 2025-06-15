@@ -6,39 +6,39 @@ namespace App\Models {
      * App\Models\AttListPayroll
      *
      * @property float $total_wbs
-     * @property string $comment_wbs8
+     * @property string|null $comment_wbs8
      * @property float $allocation8
      * @property float $percentage8
      * @property string|null $wbs8_wbl_for_salaries
-     * @property string $comment_wbs7
+     * @property string|null $comment_wbs7
      * @property float $allocation7
      * @property float $percentage7
      * @property string|null $wbs7_wbl_for_salaries
-     * @property string $comment_wbs6
+     * @property string|null $comment_wbs6
      * @property float $allocation6
      * @property float $percentage6
      * @property string|null $wbs6_wbl_for_salaries
-     * @property string $comment_wbs5
+     * @property string|null $comment_wbs5
      * @property float $allocation5
      * @property float $percentage5
      * @property string|null $wbs5_wbl_for_salaries
-     * @property string $comment_wbs4
+     * @property string|null $comment_wbs4
      * @property float $allocation4
      * @property float $percentage4
      * @property string|null $wbs4_wbl_for_salaries
-     * @property string $comment_wbs3
+     * @property string|null $comment_wbs3
      * @property float $allocation3
      * @property float $percentage3
      * @property string|null $wbs3_wbl_for_salaries
-     * @property string $comment_wbs2
+     * @property string|null $comment_wbs2
      * @property float $allocation2
      * @property float $percentage2
      * @property string|null $wbs2_wbl_for_salaries
-     * @property string $comment_wbs1
+     * @property string|null $comment_wbs1
      * @property float $allocation1
      * @property float $percentage1
      * @property string|null $wbs1_wbl_for_salaries
-     * @property string $acions
+     * @property string|null $acions
      * @property float $expectation_gap
      * @property float $estimated_salary
      * @property float $salary_paid_by_company
@@ -449,7 +449,7 @@ namespace App\Models {
      * @property bool $deleted
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon $created_at
-     * @property string $acions
+     * @property string|null $acions
      * @property float $expectation_gap
      * @property float $estimated_salary
      * @property float $salary_paid_by_company
@@ -1146,35 +1146,35 @@ namespace App\Models {
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon $created_at
      * @property float $total_wbs
-     * @property string $comment_wbs8
+     * @property string|null $comment_wbs8
      * @property float $allocation8
      * @property float $percentage8
      * @property string|null $wbs8_wbl_for_salaries
-     * @property string $comment_wbs7
+     * @property string|null $comment_wbs7
      * @property float $allocation7
      * @property float $percentage7
      * @property string|null $wbs7_wbl_for_salaries
-     * @property string $comment_wbs6
+     * @property string|null $comment_wbs6
      * @property float $allocation6
      * @property float $percentage6
      * @property string|null $wbs6_wbl_for_salaries
-     * @property string $comment_wbs5
+     * @property string|null $comment_wbs5
      * @property float $allocation5
      * @property float $percentage5
      * @property string|null $wbs5_wbl_for_salaries
-     * @property string $comment_wbs4
+     * @property string|null $comment_wbs4
      * @property float $allocation4
      * @property float $percentage4
      * @property string|null $wbs4_wbl_for_salaries
-     * @property string $comment_wbs3
+     * @property string|null $comment_wbs3
      * @property float $allocation3
      * @property float $percentage3
      * @property string|null $wbs3_wbl_for_salaries
-     * @property string $comment_wbs2
+     * @property string|null $comment_wbs2
      * @property float $allocation2
      * @property float $percentage2
      * @property string|null $wbs2_wbl_for_salaries
-     * @property string $comment_wbs1
+     * @property string|null $comment_wbs1
      * @property float $allocation1
      * @property float $percentage1
      * @property string|null $wbs1_wbl_for_salaries
@@ -3081,12 +3081,14 @@ namespace App\Models {
      * @property bool $deleted
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon $created_at
+     * @property bool $is_current
      * @property string $schedule_year
      * @property string $schedule_month
      * @property int $id
      * @method static \Illuminate\Database\Eloquent\Builder<DataEvaluationSchedule>|DataEvaluationSchedule whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataEvaluationSchedule>|DataEvaluationSchedule whereScheduleMonth($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataEvaluationSchedule>|DataEvaluationSchedule whereScheduleYear($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<DataEvaluationSchedule>|DataEvaluationSchedule whereIsCurrent($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataEvaluationSchedule>|DataEvaluationSchedule whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataEvaluationSchedule>|DataEvaluationSchedule whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<DataEvaluationSchedule>|DataEvaluationSchedule whereDeleted($value)
@@ -7858,12 +7860,12 @@ namespace App\Models {
      * @property boolean $deleted
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon $created_at
-     * @property string $head_of_sub_office_email
-     * @property string $head_of_sub_office_name
-     * @property string $supervisor_email
-     * @property string $supervisor_name
-     * @property string $employee_link
-     * @property string $svn_hired
+     * @property string|null $head_of_sub_office_email
+     * @property string|null $head_of_sub_office_name
+     * @property string|null $supervisor_email
+     * @property string|null $supervisor_name
+     * @property string|null $employee_link
+     * @property string|null $svn_hired
      * @property string $soc_reference
      * @property int $id
      * @method static \Illuminate\Database\Eloquent\Builder<EmpJobInformation>|EmpJobInformation whereId($value)
@@ -10839,10 +10841,10 @@ namespace App\Models {
      * @property bool $employee_status
      * @property string $username
      * @property string|null $contract_remarks
-     * @property string $head_of_sub_office_email
-     * @property string $head_of_sub_office_name
-     * @property string $supervisor_email
-     * @property string $supervisor_name
+     * @property string|null $head_of_sub_office_email
+     * @property string|null $head_of_sub_office_name
+     * @property string|null $supervisor_email
+     * @property string|null $supervisor_name
      * @property string|null $account_number_p3
      * @property string|null $account_number_p2
      * @property string|null $account_number_p1
@@ -10863,14 +10865,14 @@ namespace App\Models {
      * @property mixed $no_of_dependants
      * @property string $gender_type
      * @property mixed $gender
-     * @property string $employee_link
+     * @property string|null $employee_link
      * @property string $upgradeble
      * @property mixed $eligible_for_upgrade
      * @property string $contract_end
      * @property string $contract_start
      * @property string $soc_employemrnt_date
      * @property string $first_employement_date
-     * @property string $svn_hired
+     * @property string|null $svn_hired
      * @property string $working_hours
      * @property float $rnr
      * @property float $extra_fees
@@ -11640,12 +11642,12 @@ namespace App\Models {
      *
      * @property bool $employee_status
      * @property string $username
-     * @property string $head_of_sub_office_email
-     * @property string $head_of_sub_office_name
-     * @property string $supervisor_email
-     * @property string $supervisor_name
-     * @property string $employee_link
-     * @property string $svn_hired
+     * @property string|null $head_of_sub_office_email
+     * @property string|null $head_of_sub_office_name
+     * @property string|null $supervisor_email
+     * @property string|null $supervisor_name
+     * @property string|null $employee_link
+     * @property string|null $svn_hired
      * @property string $homeaddress
      * @property string|null $phonenumber
      * @property string|null $emailaddress
@@ -12327,6 +12329,315 @@ namespace App\Models {
      * @mixin \Illuminate\Database\Query\Builder
      */
     class EmpShowSalary extends \Illuminate\Database\Eloquent\Model
+    {
+        //
+    }
+
+    /**
+     * App\Models\EmpTokens
+     *
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon $created_at
+     * @property string $fcm_token
+     * @property string $soc_reference
+     * @property int $id
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereSocReference($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereFcmToken($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereUpdatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens newModelQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens newQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens query()
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens select(mixed $columns)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens selectSub(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<mixed>|string $query, string $as)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens selectRaw(string $expression)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens fromSub(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<mixed>|string $query, string $as)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens fromRaw(string $expression, mixed $bindings)
+     * @method static array createSub(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<mixed>|string $query)
+     * @method static array parseSub(mixed $query)
+     * @method static mixed prependDatabaseNameIfCrossDatabaseQuery(mixed $query)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens addSelect(mixed $column)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens distinct()
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens from(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<mixed>|\Illuminate\Contracts\Database\Query\Expression|string $table, string|null $as)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens useIndex(string $index)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens forceIndex(string $index)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens ignoreIndex(string $index)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens join(\Illuminate\Contracts\Database\Query\Expression|string $table, \Closure|\Illuminate\Contracts\Database\Query\Expression|string $first, string|null $operator, \Illuminate\Contracts\Database\Query\Expression|string|null $second, string $type, bool $where)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens joinWhere(\Illuminate\Contracts\Database\Query\Expression|string $table, \Closure|\Illuminate\Contracts\Database\Query\Expression|string $first, string $operator, \Illuminate\Contracts\Database\Query\Expression|string $second, string $type)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens joinSub(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<mixed>|string $query, string $as, \Closure|\Illuminate\Contracts\Database\Query\Expression|string $first, string|null $operator, \Illuminate\Contracts\Database\Query\Expression|string|null $second, string $type, bool $where)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens joinLateral(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<mixed>|string $query)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens leftJoinLateral(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<mixed>|string $query)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens leftJoin(\Illuminate\Contracts\Database\Query\Expression|string $table, \Closure|\Illuminate\Contracts\Database\Query\Expression|string $first, string|null $operator, \Illuminate\Contracts\Database\Query\Expression|string|null $second)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens leftJoinWhere(\Illuminate\Contracts\Database\Query\Expression|string $table, \Closure|\Illuminate\Contracts\Database\Query\Expression|string $first, string $operator, \Illuminate\Contracts\Database\Query\Expression|string|null $second)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens leftJoinSub(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<mixed>|string $query, string $as, \Closure|\Illuminate\Contracts\Database\Query\Expression|string $first, string|null $operator, \Illuminate\Contracts\Database\Query\Expression|string|null $second)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens rightJoin(\Illuminate\Contracts\Database\Query\Expression|string $table, \Closure|string $first, string|null $operator, \Illuminate\Contracts\Database\Query\Expression|string|null $second)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens rightJoinWhere(\Illuminate\Contracts\Database\Query\Expression|string $table, \Closure|\Illuminate\Contracts\Database\Query\Expression|string $first, string $operator, \Illuminate\Contracts\Database\Query\Expression|string $second)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens rightJoinSub(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<mixed>|string $query, string $as, \Closure|\Illuminate\Contracts\Database\Query\Expression|string $first, string|null $operator, \Illuminate\Contracts\Database\Query\Expression|string|null $second)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens crossJoin(\Illuminate\Contracts\Database\Query\Expression|string $table, \Closure|\Illuminate\Contracts\Database\Query\Expression|string|null $first, string|null $operator, \Illuminate\Contracts\Database\Query\Expression|string|null $second)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens crossJoinSub(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<mixed>|string $query, string $as)
+     * @method static \Illuminate\Database\Query\JoinClause newJoinClause(string $type, \Illuminate\Contracts\Database\Query\Expression|string $table)
+     * @method static \Illuminate\Database\Query\JoinLateralClause newJoinLateralClause(string $type, \Illuminate\Contracts\Database\Query\Expression|string $table)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens mergeWheres(array $wheres, array $bindings)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens where(\Closure|string|array|\Illuminate\Contracts\Database\Query\Expression $column, mixed $operator, mixed $value, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens addArrayOfWheres(array $column, string $boolean, string $method)
+     * @method static array prepareValueAndOperator(string $value, string $operator, bool $useDefault)
+     * @method static bool invalidOperatorAndValue(string $operator, mixed $value)
+     * @method static bool invalidOperator(string $operator)
+     * @method static bool isBitwiseOperator(string $operator)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhere(\Closure|string|array|\Illuminate\Contracts\Database\Query\Expression $column, mixed $operator, mixed $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereNot(\Closure|string|array|\Illuminate\Contracts\Database\Query\Expression $column, mixed $operator, mixed $value, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereNot(\Closure|string|array|\Illuminate\Contracts\Database\Query\Expression $column, mixed $operator, mixed $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereColumn(\Illuminate\Contracts\Database\Query\Expression|string|array $first, string|null $operator, string|null $second, string|null $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereColumn(\Illuminate\Contracts\Database\Query\Expression|string|array $first, string|null $operator, string|null $second)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereRaw(\Illuminate\Contracts\Database\Query\Expression|string $sql, mixed $bindings, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereRaw(string $sql, mixed $bindings)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereLike(\Illuminate\Contracts\Database\Query\Expression|string $column, string $value, bool $caseSensitive, string $boolean, bool $not)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereLike(\Illuminate\Contracts\Database\Query\Expression|string $column, string $value, bool $caseSensitive)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereNotLike(\Illuminate\Contracts\Database\Query\Expression|string $column, string $value, bool $caseSensitive, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereNotLike(\Illuminate\Contracts\Database\Query\Expression|string $column, string $value, bool $caseSensitive)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereIn(\Illuminate\Contracts\Database\Query\Expression|string $column, mixed $values, string $boolean, bool $not)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereIn(\Illuminate\Contracts\Database\Query\Expression|string $column, mixed $values)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereNotIn(\Illuminate\Contracts\Database\Query\Expression|string $column, mixed $values, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereNotIn(\Illuminate\Contracts\Database\Query\Expression|string $column, mixed $values)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereIntegerInRaw(string $column, \Illuminate\Contracts\Support\Arrayable|array $values, string $boolean, bool $not)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereIntegerInRaw(string $column, \Illuminate\Contracts\Support\Arrayable|array $values)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereIntegerNotInRaw(string $column, \Illuminate\Contracts\Support\Arrayable|array $values, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereIntegerNotInRaw(string $column, \Illuminate\Contracts\Support\Arrayable|array $values)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereNull(string|array|\Illuminate\Contracts\Database\Query\Expression $columns, string $boolean, bool $not)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereNull(string|array|\Illuminate\Contracts\Database\Query\Expression $column)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereNotNull(string|array|\Illuminate\Contracts\Database\Query\Expression $columns, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereBetween(\Illuminate\Contracts\Database\Query\Expression|string $column, string $boolean, bool $not)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereBetweenColumns(\Illuminate\Contracts\Database\Query\Expression|string $column, string $boolean, bool $not)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereBetween(\Illuminate\Contracts\Database\Query\Expression|string $column)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereBetweenColumns(\Illuminate\Contracts\Database\Query\Expression|string $column)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereNotBetween(\Illuminate\Contracts\Database\Query\Expression|string $column, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereNotBetweenColumns(\Illuminate\Contracts\Database\Query\Expression|string $column, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereNotBetween(\Illuminate\Contracts\Database\Query\Expression|string $column)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereNotBetweenColumns(\Illuminate\Contracts\Database\Query\Expression|string $column)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereNotNull(\Illuminate\Contracts\Database\Query\Expression|string $column)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereDate(\Illuminate\Contracts\Database\Query\Expression|string $column, \DateTimeInterface|string|null $operator, \DateTimeInterface|string|null $value, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereDate(\Illuminate\Contracts\Database\Query\Expression|string $column, \DateTimeInterface|string|null $operator, \DateTimeInterface|string|null $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereTime(\Illuminate\Contracts\Database\Query\Expression|string $column, \DateTimeInterface|string|null $operator, \DateTimeInterface|string|null $value, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereTime(\Illuminate\Contracts\Database\Query\Expression|string $column, \DateTimeInterface|string|null $operator, \DateTimeInterface|string|null $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereDay(\Illuminate\Contracts\Database\Query\Expression|string $column, \DateTimeInterface|string|int|null $operator, \DateTimeInterface|string|int|null $value, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereDay(\Illuminate\Contracts\Database\Query\Expression|string $column, \DateTimeInterface|string|int|null $operator, \DateTimeInterface|string|int|null $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereMonth(\Illuminate\Contracts\Database\Query\Expression|string $column, \DateTimeInterface|string|int|null $operator, \DateTimeInterface|string|int|null $value, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereMonth(\Illuminate\Contracts\Database\Query\Expression|string $column, \DateTimeInterface|string|int|null $operator, \DateTimeInterface|string|int|null $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereYear(\Illuminate\Contracts\Database\Query\Expression|string $column, \DateTimeInterface|string|int|null $operator, \DateTimeInterface|string|int|null $value, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereYear(\Illuminate\Contracts\Database\Query\Expression|string $column, \DateTimeInterface|string|int|null $operator, \DateTimeInterface|string|int|null $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens addDateBasedWhere(string $type, \Illuminate\Contracts\Database\Query\Expression|string $column, string $operator, mixed $value, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereNested(string $boolean)
+     * @method static \Illuminate\Database\Query\Builder forNestedWhere()
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens addNestedWhereQuery(\Illuminate\Database\Query\Builder $query, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereSub(\Illuminate\Contracts\Database\Query\Expression|string $column, string $operator, \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<mixed> $callback, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereExists(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<mixed> $callback, string $boolean, bool $not)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereExists(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<mixed> $callback, bool $not)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereNotExists(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<mixed> $callback, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereNotExists(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<mixed> $callback)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens addWhereExistsQuery(string $boolean, bool $not)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereRowValues(array $columns, string $operator, array $values, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereRowValues(array $columns, string $operator, array $values)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereJsonContains(string $column, mixed $value, string $boolean, bool $not)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereJsonContains(string $column, mixed $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereJsonDoesntContain(string $column, mixed $value, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereJsonDoesntContain(string $column, mixed $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereJsonOverlaps(string $column, mixed $value, string $boolean, bool $not)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereJsonOverlaps(string $column, mixed $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereJsonDoesntOverlap(string $column, mixed $value, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereJsonDoesntOverlap(string $column, mixed $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereJsonContainsKey(string $column, string $boolean, bool $not)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereJsonContainsKey(string $column)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereJsonDoesntContainKey(string $column, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereJsonDoesntContainKey(string $column)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereJsonLength(string $column, mixed $operator, mixed $value, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereJsonLength(string $column, mixed $operator, mixed $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens dynamicWhere(string $method, array $parameters)
+     * @method static void addDynamic(string $segment, string $connector, array $parameters, int $index)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereFullText(string|string[] $columns, string $value, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereFullText(string|string[] $columns, string $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereAll(\Illuminate\Contracts\Database\Query\Expression[]|\Closure[]|string[] $columns, mixed $operator, mixed $value, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereAll(\Illuminate\Contracts\Database\Query\Expression[]|\Closure[]|string[] $columns, mixed $operator, mixed $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereAny(\Illuminate\Contracts\Database\Query\Expression[]|\Closure[]|string[] $columns, mixed $operator, mixed $value, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereAny(\Illuminate\Contracts\Database\Query\Expression[]|\Closure[]|string[] $columns, mixed $operator, mixed $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereNone(\Illuminate\Contracts\Database\Query\Expression[]|\Closure[]|string[] $columns, mixed $operator, mixed $value, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereNone(\Illuminate\Contracts\Database\Query\Expression[]|\Closure[]|string[] $columns, mixed $operator, mixed $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens groupBy(array|\Illuminate\Contracts\Database\Query\Expression|string ...$groups)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens groupByRaw(string $sql)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens having(\Illuminate\Contracts\Database\Query\Expression|\Closure|string $column, \DateTimeInterface|string|int|float|null $operator, \Illuminate\Contracts\Database\Query\Expression|\DateTimeInterface|string|int|float|null $value, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orHaving(\Illuminate\Contracts\Database\Query\Expression|\Closure|string $column, \DateTimeInterface|string|int|float|null $operator, \Illuminate\Contracts\Database\Query\Expression|\DateTimeInterface|string|int|float|null $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens havingNested(string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens addNestedHavingQuery(\Illuminate\Database\Query\Builder $query, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens havingNull(array|string $columns, string $boolean, bool $not)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orHavingNull(string $column)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens havingNotNull(array|string $columns, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orHavingNotNull(string $column)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens havingBetween(string $column, string $boolean, bool $not)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens havingRaw(string $sql, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orHavingRaw(string $sql)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orderBy(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<mixed>|\Illuminate\Contracts\Database\Query\Expression|string $column, string $direction)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orderByDesc(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<mixed>|\Illuminate\Contracts\Database\Query\Expression|string $column)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens latest(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Contracts\Database\Query\Expression|string $column)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens oldest(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Contracts\Database\Query\Expression|string $column)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens inRandomOrder(string|int $seed)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orderByRaw(string $sql, array $bindings)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens skip(int $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens offset(int $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens take(int $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens limit(int $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens groupLimit(int $value, string $column)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens forPage(int $page, int $perPage)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens forPageBeforeId(int $perPage, int|null $lastId, string $column)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens forPageAfterId(int $perPage, int|null $lastId, string $column)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens reorder(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Contracts\Database\Query\Expression|string|null $column, string $direction)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens reorderDesc(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Contracts\Database\Query\Expression|string|null $column)
+     * @method static array removeExistingOrdersFor(string $column)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens union(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<mixed> $query, bool $all)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens unionAll(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<mixed> $query)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens lock(string|bool $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens lockForUpdate()
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens sharedLock()
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens beforeQuery()
+     * @method static void applyBeforeQueryCallbacks()
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens afterQuery()
+     * @method static mixed applyAfterQueryCallbacks(mixed $result)
+     * @method static string toSql()
+     * @method static string toRawSql()
+     * @method static EmpTokens|null find(int|string $id, string|\Illuminate\Contracts\Database\Query\Expression|(string|\Illuminate\Contracts\Database\Query\Expression)[] $columns)
+     * @method static mixed findOr(mixed $id, callable|string|\Illuminate\Contracts\Database\Query\Expression|(string|\Illuminate\Contracts\Database\Query\Expression)[] $columns, callable|null $callback)
+     * @method static mixed value(string $column)
+     * @method static mixed rawValue()
+     * @method static mixed soleValue(string $column)
+     * @method static \Illuminate\Support\Collection<int,\stdClass> get(string|\Illuminate\Contracts\Database\Query\Expression|(string|\Illuminate\Contracts\Database\Query\Expression)[] $columns)
+     * @method static array runSelect()
+     * @method static \Illuminate\Support\Collection withoutGroupLimitKeys(\Illuminate\Support\Collection $items)
+     * @method static \Illuminate\Pagination\LengthAwarePaginator paginate(int|\Closure $perPage, string|\Illuminate\Contracts\Database\Query\Expression|(string|\Illuminate\Contracts\Database\Query\Expression)[] $columns, string $pageName, int|null $page, \Closure|int|null $total)
+     * @method static \Illuminate\Contracts\Pagination\Paginator simplePaginate(int $perPage, string|\Illuminate\Contracts\Database\Query\Expression|(string|\Illuminate\Contracts\Database\Query\Expression)[] $columns, string $pageName, int|null $page)
+     * @method static \Illuminate\Contracts\Pagination\CursorPaginator cursorPaginate(int|null $perPage, string|\Illuminate\Contracts\Database\Query\Expression|(string|\Illuminate\Contracts\Database\Query\Expression)[] $columns, string $cursorName, \Illuminate\Pagination\Cursor|string|null $cursor)
+     * @method static \Illuminate\Support\Collection ensureOrderForCursorPagination(bool $shouldReverse)
+     * @method static int getCountForPagination((string|\Illuminate\Contracts\Database\Query\Expression)[] $columns)
+     * @method static array runPaginationCountQuery((string|\Illuminate\Contracts\Database\Query\Expression)[] $columns)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens cloneForPaginationCount()
+     * @method static (string|\Illuminate\Contracts\Database\Query\Expression)[] withoutSelectAliases((string|\Illuminate\Contracts\Database\Query\Expression)[] $columns)
+     * @method static \Illuminate\Support\LazyCollection<int,\stdClass> cursor()
+     * @method static void enforceOrderBy()
+     * @method static mixed pluck(\Illuminate\Contracts\Database\Query\Expression|string $column, string|null $key)
+     * @method static string|null stripTableForPluck(string $column)
+     * @method static \Illuminate\Support\Collection pluckFromObjectColumn(array $queryResult, string $column, string $key)
+     * @method static \Illuminate\Support\Collection pluckFromArrayColumn(array $queryResult, string $column, string $key)
+     * @method static string implode(string $column, string $glue)
+     * @method static bool exists()
+     * @method static bool doesntExist()
+     * @method static mixed existsOr()
+     * @method static mixed doesntExistOr()
+     * @method static int count(\Illuminate\Contracts\Database\Query\Expression|string $columns)
+     * @method static mixed min(\Illuminate\Contracts\Database\Query\Expression|string $column)
+     * @method static mixed max(\Illuminate\Contracts\Database\Query\Expression|string $column)
+     * @method static mixed sum(\Illuminate\Contracts\Database\Query\Expression|string $column)
+     * @method static mixed avg(\Illuminate\Contracts\Database\Query\Expression|string $column)
+     * @method static mixed average(\Illuminate\Contracts\Database\Query\Expression|string $column)
+     * @method static mixed aggregate(string $function, array $columns)
+     * @method static float|int numericAggregate(string $function, array $columns)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens setAggregate(string $function, (\Illuminate\Contracts\Database\Query\Expression|string)[] $columns)
+     * @method static \TResult onceWithColumns((string|\Illuminate\Contracts\Database\Query\Expression)[] $columns, callable $callback)
+     * @method static bool insert()
+     * @method static int insertOrIgnore()
+     * @method static int insertGetId(string|null $sequence)
+     * @method static int insertUsing(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<mixed>|string $query)
+     * @method static int insertOrIgnoreUsing(\Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<mixed>|string $query)
+     * @method static int update()
+     * @method static int updateFrom()
+     * @method static bool updateOrInsert()
+     * @method static int upsert()
+     * @method static int increment(string $column, float|int $amount)
+     * @method static int incrementEach(array<string,float|int|numeric-string> $columns, array<string,mixed> $extra)
+     * @method static int decrement(string $column, float|int $amount)
+     * @method static int decrementEach(array<string,float|int|numeric-string> $columns, array<string,mixed> $extra)
+     * @method static int delete(mixed $id)
+     * @method static void truncate()
+     * @method static \Illuminate\Database\Query\Builder newQuery()
+     * @method static \Illuminate\Database\Query\Builder forSubQuery()
+     * @method static list<string> getColumns()
+     * @method static \Illuminate\Contracts\Database\Query\Expression raw(mixed $value)
+     * @method static \Illuminate\Support\Collection getUnionBuilders()
+     * @method static mixed getLimit()
+     * @method static mixed getOffset()
+     * @method static list getBindings()
+     * @method static array{select: list, from: list, join: list, where: list, groupBy: list, having: list, order: list, union: list, unionOrder: list} getRawBindings()
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens setBindings(list $bindings, "select"|"from"|"join"|"where"|"groupBy"|"having"|"order"|"union"|"unionOrder" $type)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens addBinding(mixed $value, "select"|"from"|"join"|"where"|"groupBy"|"having"|"order"|"union"|"unionOrder" $type)
+     * @method static mixed castBinding(mixed $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens mergeBindings(self $query)
+     * @method static list cleanBindings(array $bindings)
+     * @method static mixed flattenValue(mixed $value)
+     * @method static string defaultKeyName()
+     * @method static \Illuminate\Database\ConnectionInterface getConnection()
+     * @method static \Illuminate\Database\Query\Processors\Processor getProcessor()
+     * @method static \Illuminate\Database\Query\Grammars\Grammar getGrammar()
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens useWritePdo()
+     * @method static bool isQueryable(mixed $value)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens clone()
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens cloneWithout()
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens cloneWithoutBindings()
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens dump(mixed ...$args)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens dumpRawSql()
+     * @method static void dd()
+     * @method static void ddRawSql()
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens wherePast(array|string $columns)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereNowOrPast(array|string $columns)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWherePast(array|string $columns)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereNowOrPast(array|string $columns)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereFuture(array|string $columns)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereNowOrFuture(array|string $columns)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereFuture(array|string $columns)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereNowOrFuture(array|string $columns)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens wherePastOrFuture(array|string $columns, string $operator, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereToday(array|string $columns, string $boolean)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereBeforeToday(array|string $columns)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereTodayOrBefore(array|string $columns)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereAfterToday(array|string $columns)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereTodayOrAfter(array|string $columns)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereToday(array|string $columns)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereBeforeToday(array|string $columns)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereTodayOrBefore(array|string $columns)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereAfterToday(array|string $columns)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens orWhereTodayOrAfter(array|string $columns)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens whereTodayBeforeOrAfter(array|string $columns, string $operator, string $boolean)
+     * @method static bool chunk(int $count, callable $callback)
+     * @method static mixed chunkMap(callable $callback, int $count)
+     * @method static bool each(callable $callback, int $count)
+     * @method static bool chunkById(int $count, callable $callback, string|null $column, string|null $alias)
+     * @method static bool chunkByIdDesc(int $count, callable $callback, string|null $column, string|null $alias)
+     * @method static bool orderedChunkById(int $count, callable $callback, string|null $column, string|null $alias, bool $descending)
+     * @method static bool eachById(callable $callback, int $count, string|null $column, string|null $alias)
+     * @method static mixed lazy(int $chunkSize)
+     * @method static mixed lazyById(int $chunkSize, string|null $column, string|null $alias)
+     * @method static mixed lazyByIdDesc(int $chunkSize, string|null $column, string|null $alias)
+     * @method static \Illuminate\Support\LazyCollection orderedLazyById(int $chunkSize, string|null $column, string|null $alias, bool $descending)
+     * @method static EmpTokens|null first(array|string $columns)
+     * @method static EmpTokens firstOrFail(array|string $columns, string|null $message)
+     * @method static EmpTokens sole(array|string $columns)
+     * @method static \Illuminate\Contracts\Pagination\CursorPaginator paginateUsingCursor(int $perPage, array|string $columns, string $cursorName, \Illuminate\Pagination\Cursor|string|null $cursor)
+     * @method static string getOriginalColumnNameForCursorPagination(\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<mixed> $builder, string $parameter)
+     * @method static \Illuminate\Pagination\LengthAwarePaginator paginator(\Illuminate\Support\Collection $items, int $total, int $perPage, int $currentPage, array $options)
+     * @method static \Illuminate\Pagination\Paginator simplePaginator(\Illuminate\Support\Collection $items, int $perPage, int $currentPage, array $options)
+     * @method static \Illuminate\Pagination\CursorPaginator cursorPaginator(\Illuminate\Support\Collection $items, int $perPage, \Illuminate\Pagination\Cursor $cursor, array $options)
+     * @method static \Illuminate\Database\Eloquent\Builder<EmpTokens>|EmpTokens tap(callable $callback)
+     * @method static mixed pipe(callable $callback)
+     * @method static mixed when(callable|\TWhenParameter|null $value, callable|null $callback, callable|null $default)
+     * @method static mixed unless(callable|\TUnlessParameter|null $value, callable|null $callback, callable|null $default)
+     * @method static \Illuminate\Support\Collection explain()
+     * @method static mixed forwardCallTo(mixed $object, string $method, array $parameters)
+     * @method static mixed forwardDecoratedCallTo(mixed $object, string $method, array $parameters)
+     * @method static void throwBadMethodCallException(string $method)
+     * @method static void macro(string $name, object|callable $macro)
+     * @method static void mixin(object $mixin, bool $replace)
+     * @method static bool hasMacro(string $name)
+     * @method static void flushMacros()
+     * @method static mixed macroCall(string $method, array $parameters)
+     * @mixin \Illuminate\Database\Query\Builder
+     */
+    class EmpTokens extends \Illuminate\Database\Eloquent\Model
     {
         //
     }
