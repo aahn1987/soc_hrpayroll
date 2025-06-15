@@ -139,4 +139,12 @@ class EmpGeneralInfoController extends Controller
         }
         EmpJobInformation::create($data);
     }
+    public function empexist($ref)
+    {
+        $exists = EmpGeneralInfo::where('soc_reference', $ref)->exists();
+
+        return response()->json([
+            'exists' => $exists ? 1 : 0
+        ]);
+    }
 }

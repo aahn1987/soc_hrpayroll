@@ -46,7 +46,7 @@ class EmpContractHistoryController extends Controller
         }
         EmpContractHistory::create($data);
     }
-    public function edithistory(Request $request, $histroydata = [])
+    public function edithistory(Request $request)
     {
         $fields = [
             'soc_reference',
@@ -70,23 +70,23 @@ class EmpContractHistoryController extends Controller
         ];
         $data = [];
         foreach ($fields as $field) {
-            $data[$field] = $request->filled($field) ? $request->input($field) : ($histroydata[$field] ?? null);
+            $data[$field] = $request->input($field);
         }
         $soc_reference = $data['soc_reference'];
         EmpContractHistory::where('soc_reference', $soc_reference)->where('is_current', 1)->update($data);
     }
-    public function clearcurrent($histroydata = [])
+    public function clearcurrent($ref)
     {
-        EmpContractHistory::where('soc_reference', $histroydata['soc_reference'])->update(['is_current' => 0]);
+        EmpContractHistory::where('soc_reference', $ref)->update(['is_current' => 0]);
 
     }
     public function deletehistory(Request $request)
     {
         EmpContractHistory::where('id', $request->id)->update(['deleted' => 1]);
     }
-    public function contractend($histroydata = [])
+    public function contractend($ref)
     {
-        $history = EmpContractHistory::select('contract_end')->where('soc_reference', $histroydata['soc_reference'])->where('is_current', 1)->first();
+        $history = EmpContractHistory::select('contract_end')->where('soc_reference', $ref)->where('is_current', 1)->first();
         return $history->contract_end;
     }
 }

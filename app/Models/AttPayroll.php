@@ -15,7 +15,7 @@ class AttPayroll extends Model
         'base_salary',
         'communication',
         'attendance',
-        'danger_pay',
+        'dpta',
         'retors',
         'soc_fees',
         'total_salary',

@@ -84,3 +84,45 @@ if (!function_exists('generateViewerHtml')) {
         };
     }
 }
+if (!function_exists('excel_float')) {
+    function excel_float($value): float
+    {
+        return (float) (!empty($value) ? $value : 0);
+    }
+}
+if (!function_exists('check_excel_flag')) {
+    function check_excel_flag($value): int
+    {
+        if (empty($value) || !is_numeric($value) || (float) $value == 0) {
+            return 2;
+        }
+        return 1;
+    }
+}
+if (!function_exists('excel_date')) {
+    function excel_date($value): string
+    {
+        return !empty($value)
+            ? date("Y-m-d", strtotime($value))
+            : date("Y-m-d", strtotime("1 January 1990"));
+    }
+}
+if (!function_exists('calculate_age')) {
+    function calculate_age(string $dob, $age): float
+    {
+        if (!empty($age)) {
+            return (float) $age;
+        }
+        $dobTime = strtotime($dob);
+        $nowTime = time();
+        $diffInSeconds = $nowTime - $dobTime;
+        $years = $diffInSeconds / (365.25 * 24 * 60 * 60); // Account for leap years
+        return round($years, 2);
+    }
+}
+if (!function_exists('excel_payment')) {
+    function excel_payment($value): int
+    {
+        return (empty($value) || strtolower(trim($value)) === 'cash') ? 2 : 1;
+    }
+}

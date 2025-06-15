@@ -96,7 +96,7 @@ Route::post('employee/objective/new', [EmpObjectivesController::class, 'creatobj
 
 // Employees API - Add New Employee
 Route::post('employee/new', [EmpDataAndStatusController::class, 'newemployee']);
-
+Route::post('employee/import', [EmpDataAndStatusController::class, 'importdata']);
 
 
 
