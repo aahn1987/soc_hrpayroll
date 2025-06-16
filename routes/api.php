@@ -20,6 +20,8 @@ use App\Http\Controllers\EmpDocumentsController;
 use App\Http\Controllers\EmpSalaryInformationController;
 use App\Http\Controllers\EmpTokensController;
 use App\Http\Controllers\DataEvaluationScheduleController;
+use App\Http\Controllers\EmpEvaluationsController;
+use App\Http\Controllers\EmpLeaveRequestsController;
 use App\Http\Controllers\TestController;
 
 // System Config API
@@ -99,12 +101,25 @@ Route::post('employee/objective/new', [EmpObjectivesController::class, 'creatobj
 Route::post('employee/new', [EmpDataAndStatusController::class, 'newemployee']);
 Route::post('employee/import', [EmpDataAndStatusController::class, 'importdata']);
 
-// EMployee API - Objective
+// Employee API - Objective
 Route::post('/objective/byemp', [EmpObjectivesController::class, 'getobjectivebyemp']);
 Route::post('/objective/bytoken', [EmpObjectivesController::class, 'getobjectivebytoken']);
 Route::post('/objective/edit', [EmpObjectivesController::class, 'editobjective']);
 Route::post('/objective/approve/supervisor', [EmpObjectivesController::class, 'approvebysupervisor']);
 Route::post('/objective/approve/headofsuboffice', [EmpObjectivesController::class, 'approvebyheadofsuboffice']);
+
+// Employee API - Leaves
+Route::post('/leave/list', [EmpLeaveRequestsController::class, 'listleave']);
+Route::post('/leave/show', [EmpLeaveRequestsController::class, 'showleave']);
+Route::post('/leave/request', [EmpLeaveRequestsController::class, 'requestleave']);
+Route::post('/leave/socapprove', [EmpLeaveRequestsController::class, 'approvesoc']);
+Route::post('/leave/supervisorapprove', [EmpLeaveRequestsController::class, 'approvesupervisor']);
+Route::post('/leave/headofsubofficeapprove', [EmpLeaveRequestsController::class, 'approveheadofsuboffice']);
+Route::post('/leave/cancel', [EmpLeaveRequestsController::class, 'requestcancellation']);
+Route::post('/leave/supervisorcancel', [EmpLeaveRequestsController::class, 'cancelsupervisor']);
+Route::post('/leave/headofsubofficecancel', [EmpLeaveRequestsController::class, 'cancelheadofsuboffice']);
+
+
 
 
 //Payroll API

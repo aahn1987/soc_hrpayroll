@@ -118,4 +118,28 @@ class EmpLeaveBalanceController extends Controller
         EmpLeaveBalance::create($data);
 
     }
+    public function deductsick($days, $socref)
+    {
+        $employeeLeaveBal = EmpLeavebalance::where('soc_reference', $socref)
+            ->where('deleted', 0)
+            ->first();
+        $employeeLeaveBal->sick_leave_balance = $employeeLeaveBal->sick_leave_balance - $days;
+        $employeeLeaveBal->save();
+    }
+    public function deductannual($days, $socref)
+    {
+        $employeeLeaveBal = EmpLeavebalance::where('soc_reference', $socref)
+            ->where('deleted', 0)
+            ->first();
+        $employeeLeaveBal->annual_leave_balance = $employeeLeaveBal->annual_leave_balance - $days;
+        $employeeLeaveBal->save();
+    }
+    public function deductcarried($days, $socref)
+    {
+        $employeeLeaveBal = EmpLeavebalance::where('soc_reference', $socref)
+            ->where('deleted', 0)
+            ->first();
+        $employeeLeaveBal->carried_forward_balance = $employeeLeaveBal->carried_forward_balance - $days;
+        $employeeLeaveBal->save();
+    }
 }

@@ -258,4 +258,9 @@ class DataSystemDataController extends Controller
         $new->save();
         return $new->id;
     }
+    public function requestleavetype($item)
+    {
+        $DataLeaveTypes = DataLeaveTypes::select('leave_type')->where('id', $item)->first();
+        return $DataLeaveTypes['leave_type'];
+    }
 }

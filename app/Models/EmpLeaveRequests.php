@@ -18,6 +18,7 @@ class EmpLeaveRequests extends Model
         'leave_type_id',
         'start_date',
         'end_date',
+        'leave_reason',
         'days',
         'supervisor_name',
         'supervisor_email',
