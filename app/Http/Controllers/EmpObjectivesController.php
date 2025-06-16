@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EmpListObjectives;
-use App\Models\EmpObjectives;
 use Illuminate\Http\Request;
-use App\Mail\ObjectiveUpdateRequestMail;
 use Illuminate\Support\Facades\Mail;
 use App\Models\EmpTokens;
+use App\Models\EmpListObjectives;
+use App\Models\EmpObjectives;
 use App\Services\FcmService;
+use App\Mail\ObjectiveUpdateRequestMail;
+use App\Http\Controllers\EmpNotificationsController;
 class EmpObjectivesController extends Controller
 {
     public function getobjectivebyemp(Request $request)
@@ -61,9 +62,7 @@ class EmpObjectivesController extends Controller
     public function approvebysupervisor(Request $request)
     {
         $objective = EmpObjectives::where('objective_token', $request->objective_token)->firstOrFail();
-
         $objective->supervisor_approval = 1;
-
         if ($objective->with_head_of_sub_office == 1) {
             $objlink = env('APP_FRONT') . 'objective/' . $request->objective_token . '/approve/headofsuboffice';
             Mail::to($request->head_of_sub_office_email)->send(
@@ -82,7 +81,6 @@ class EmpObjectivesController extends Controller
                     $objective->supervisor_name . ' has approved your objective, waiting for head of sub office approval.'
                 );
             }
-
         } else {
             $objective->head_of_sub_office_approval = 1;
         }
@@ -102,7 +100,7 @@ class EmpObjectivesController extends Controller
             FcmService::sendNotificationSingle(
                 $token,
                 'Objective Process',
-                $objective->supervisor_name . ' has approved your objective, waiting for head of sub office approval.'
+                $objective->head_of_sub_office_name . ' has approved your objective, waiting for head of sub office approval.'
             );
         }
         return response()->json([
