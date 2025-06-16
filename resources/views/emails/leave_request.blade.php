@@ -25,7 +25,7 @@
                 style="background-color: #28a745; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px;">Approve
                 Leave</a>
         </p>
-        <p style="font-size: 14px; color: #999;">Regards,<br>SOC Portal Leaves</p>
+        <p style="font-size: 14px; color: #999;">Regards,<br>SOC Team</p>
     </div>
 </body>
 

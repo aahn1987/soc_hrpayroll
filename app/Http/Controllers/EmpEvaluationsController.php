@@ -2,47 +2,92 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EmpEvaluations;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Models\EmpEvaluations;
+use App\Models\EmpListEvaluations;
+use App\Models\EmpEvaluated;
+use App\Models\DataEvaluationSchedule;
+use App\Mail\RequestEvaluationMail;
 
 class EmpEvaluationsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function listevaluations(Request $request)
+    {
+        $evaluations = EmpListEvaluations::where('soc_reference', $request->soc_reference)->get();
+        return response()->json($evaluations);
+    }
+    public function showevaluation(Request $request)
+    {
+        $evaluations = EmpListEvaluations::where('eval_token', $request->eval_token)->first();
+        return response()->json($evaluations);
+    }
+    public function requestsupervisor(Request $request)
+    {
+        $evalinfo = DataEvaluationSchedule::where('is_current', 1)->first();
+        $data = $request->all();
+        $data['eval_token'] = 'evaluation_' . date('YmdHis');
+        $data['request_for_month'] = date("F");
+        $data['request_for_year'] = date("Y");
+        $data['request_date'] = date("Y-m-d");
+        $data['evaluation_requested'] = 1;
+        $data['schedule_id'] = $evalinfo->id;
+        EmpEvaluations::create($data);
+        EmpEvaluated::create($data);
+        $approveurl = env('APP_FRONT') . 'evaluation/' . $data['leave_token'] . '/supervisor';
+        Mail::to($request->supervisor_email)->send(new RequestEvaluationMail($data, $approveurl));
+        return response()->json([
+            'success' => true,
+            'message' => "Evaluation Request for {$data['request_for_month']} - {$data['request_for_year']} is sent to supervisor successfully."
+        ]);
+    }
+    public function supervisorevaluation(Request $request)
     {
         //
     }
+    public function requestheadofsuboffice(Request $request)
+    {
+        $evaldata = EmpListEvaluations::where('eval_token', $request->eval_token)->first();
+        $data['eval_token'] = $request->eval_token;
+        $data['request_for_month'] = $evaldata->request_for_month;
+        $data['request_for_year'] = $evaldata->request_for_year;
+        $data['fullname'] = $evaldata->fullname;
+        $data['objective_text'] = $evaldata->objective_text;
+        $data['head_of_sub_office_email'] = $request->head_of_sub_office_email;
+        $data['head_of_sub_office_name'] = $request->head_of_sub_office_name;
+        EmpEvaluations::where('eval_token', $request->eval_token)->update($data);
+        $approveurl = env('APP_FRONT') . 'evaluation/' . $request->eval_token . '/headofsuboffice';
+        Mail::to($request->head_of_sub_office_email)->send(new RequestEvaluationMail($data, $approveurl));
+        return response()->json([
+            'success' => true,
+            'message' => "Evaluation Request for {$data['request_for_month']} - {$data['request_for_year']} is sent to Head of Sub office successfully."
+        ]);
+    }
+    public function skipheadofsuboffice(Request $request)
+    {
+        $evaldata = EmpListEvaluations::where('eval_token', $request->eval_token)->first();
+        $evlupdate = EmpEvaluations::where('eval_token', $request->eval_token)->first();
+        $evlupdate->head_of_sub_office_name = $evaldata->supervisor_name;
+        $evlupdate->head_of_sub_office_email = $evaldata->supervisor_email;
+        $evlupdate->head_of_sub_office_comment = $evaldata->supervisor_comment;
+        $evlupdate->head_of_sub_office_eval_date = $evaldata->supervisor_eval_date;
+        $evlupdate->head_of_sub_office_status = $evaldata->supervisor_status;
+        $evlupdate->progress = 70;
+        return response()->json([
+            'success' => true,
+            'message' => "Evaluation Head of Sub office Skipped successfully."
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    }
+    public function headofsubofficeevaluation(Request $request)
     {
         //
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(EmpEvaluations $empEvaluations)
+    public function commentevaluatin(Request $request)
     {
         //
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, EmpEvaluations $empEvaluations)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(EmpEvaluations $empEvaluations)
+    public function deleteevaluation(Request $request)
     {
         //
     }

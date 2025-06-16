@@ -119,8 +119,16 @@ Route::post('/leave/cancel', [EmpLeaveRequestsController::class, 'requestcancell
 Route::post('/leave/supervisorcancel', [EmpLeaveRequestsController::class, 'cancelsupervisor']);
 Route::post('/leave/headofsubofficecancel', [EmpLeaveRequestsController::class, 'cancelheadofsuboffice']);
 
-
-
+// Employee API - Evaluations
+Route::post('/evaluation/list', [EmpEvaluationsController::class, 'listevaluations']);
+Route::post('/evaluation/show', [EmpEvaluationsController::class, 'showevaluation']);
+Route::post('/evaluation/requestsupervisor', [EmpEvaluationsController::class, 'requestsupervisor']);
+Route::post('/evaluation/requestheadofsuboffice', [EmpEvaluationsController::class, 'requestheadofsuboffice']);
+Route::post('/evaluation/supervisor', [EmpEvaluationsController::class, 'supervisorevaluation']);
+Route::post('/evaluation/headofsuboffice', [EmpEvaluationsController::class, 'headofsubofficeevaluation']);
+Route::post('/evaluation/comment', [EmpEvaluationsController::class, 'commentevaluatin']);
+Route::post('/evaluation/skip', [EmpEvaluationsController::class, 'skipheadofsuboffice']);
+Route::post('/evaluation/delete', [EmpEvaluationsController::class, 'deleteevaluation']);
 
 //Payroll API
 Route::post('/payroll/list', [AttPayrollController::class, 'list']);
