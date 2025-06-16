@@ -7,7 +7,7 @@ use App\Models\EmpLeaveBalance;
 use App\Http\Controllers\SysAdminLogsController;
 use Illuminate\Support\Facades\Storage;
 use PhpOffice\PhpSpreadsheet\IOFactory;
-
+use Illuminate\Support\Facades\DB;
 class EmpLeaveBalanceController extends Controller
 {
     public function increasebalance(Request $request)
@@ -118,28 +118,19 @@ class EmpLeaveBalanceController extends Controller
         EmpLeaveBalance::create($data);
 
     }
-    public function deductsick($days, $socref)
+    public function rotatebalance(Request $request)
     {
-        $employeeLeaveBal = EmpLeavebalance::where('soc_reference', $socref)
-            ->where('deleted', 0)
-            ->first();
-        $employeeLeaveBal->sick_leave_balance = $employeeLeaveBal->sick_leave_balance - $days;
-        $employeeLeaveBal->save();
-    }
-    public function deductannual($days, $socref)
-    {
-        $employeeLeaveBal = EmpLeavebalance::where('soc_reference', $socref)
-            ->where('deleted', 0)
-            ->first();
-        $employeeLeaveBal->annual_leave_balance = $employeeLeaveBal->annual_leave_balance - $days;
-        $employeeLeaveBal->save();
-    }
-    public function deductcarried($days, $socref)
-    {
-        $employeeLeaveBal = EmpLeavebalance::where('soc_reference', $socref)
-            ->where('deleted', 0)
-            ->first();
-        $employeeLeaveBal->carried_forward_balance = $employeeLeaveBal->carried_forward_balance - $days;
-        $employeeLeaveBal->save();
+        DB::statement('CALL process_leaveBalanceRotate()');
+        $logdata = [
+            'refrence' => $request->adminref,
+            'log_action' => 'Leave Balance',
+            'log_details' => "Annual Leave Balance Rotation"
+        ];
+        $logadd = new SysAdminLogsController;
+        $logadd->addlog($logdata);
+        return response()->json([
+            'success' => true,
+            'message' => 'Leave balances rotated successfully.',
+        ]);
     }
 }

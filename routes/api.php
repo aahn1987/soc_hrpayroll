@@ -145,6 +145,7 @@ Route::post('/leave/balance/increase', [EmpLeaveBalanceController::class, 'incre
 Route::post('/leave/balance/update', [EmpLeaveBalanceController::class, 'increasebalanceemp']);
 Route::post('/leave/balance/show', [EmpLeaveBalanceController::class, 'show']);
 Route::post('/leave/balance/import', [EmpLeaveBalanceController::class, 'importbalance']);
+Route::post('/leave/balance/rotate', [EmpLeaveBalanceController::class, 'rotatebalance']);
 
 // System Data API
 Route::get('/data/contractcategories', [DataSystemDataController::class, 'contractcategories']);
