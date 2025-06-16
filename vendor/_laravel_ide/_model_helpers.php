@@ -7172,7 +7172,7 @@ namespace App\Models {
      * @property \Illuminate\Support\Carbon $created_at
      * @property double $progress
      * @property boolean $employee_status
-     * @property \Illuminate\Support\Carbon $employee_comment_date
+     * @property \Illuminate\Support\Carbon|null $employee_comment_date
      * @property string|null $employee_comment
      * @property string|null $employee_agreement
      * @property boolean $head_of_sub_office_status
@@ -9165,7 +9165,7 @@ namespace App\Models {
      *
      * @property float $progress
      * @property bool $employee_status
-     * @property string $employee_comment_date
+     * @property string|null $employee_comment_date
      * @property string|null $employee_comment
      * @property string|null $employee_agreement
      * @property bool $head_of_sub_office_status
@@ -16509,7 +16509,7 @@ namespace App\Models {
      *
      * @property float $progress
      * @property bool $employee_status
-     * @property string $employee_comment_date
+     * @property string|null $employee_comment_date
      * @property string|null $employee_comment
      * @property string|null $employee_agreement
      * @property bool $head_of_sub_office_status

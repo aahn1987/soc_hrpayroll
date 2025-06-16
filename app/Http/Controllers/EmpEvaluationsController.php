@@ -7,9 +7,10 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\EmpEvaluations;
 use App\Models\EmpListEvaluations;
 use App\Models\EmpEvaluated;
+use App\Models\EmpTokens;
 use App\Models\DataEvaluationSchedule;
 use App\Mail\RequestEvaluationMail;
-
+use App\Services\FcmService;
 class EmpEvaluationsController extends Controller
 {
     public function listevaluations(Request $request)
@@ -43,7 +44,27 @@ class EmpEvaluationsController extends Controller
     }
     public function supervisorevaluation(Request $request)
     {
-        //
+        $evaldata = EmpListEvaluations::where('eval_token', $request->eval_token)->first();
+        $data = [];
+        $data['contract_duration'] = $request->contract_duration;
+        $data['employee_rating'] = $request->employee_rating;
+        $data['supervisor_comment'] = $request->supervisor_comment;
+        $data['supervisor_eval_date'] = date("Y-m-d");
+        $data['supervisor_status'] = 1;
+        $data['progress'] = 40;
+        EmpEvaluations::where('eval_token', $request->eval_token)->update($data);
+        $token = EmpTokens::where('soc_reference', $evaldata->soc_reference)->value('fcm_token');
+        if ($token) {
+            FcmService::sendNotificationSingle(
+                $token,
+                'Evaluation Process',
+                "{$evaldata->supervisor_name} has finished the evalution for {$evaldata->request_for_month} -{$evaldata->request_for_year}"
+            );
+        }
+        return response()->json([
+            'success' => true,
+            'message' => "Evaluation Commented Successfully"
+        ]);
     }
     public function requestheadofsuboffice(Request $request)
     {
@@ -81,14 +102,50 @@ class EmpEvaluationsController extends Controller
     }
     public function headofsubofficeevaluation(Request $request)
     {
-        //
+        $evaldata = EmpListEvaluations::where('eval_token', $request->eval_token)->first();
+        $data = [];
+        $data['head_of_sub_office_comment'] = $request->head_of_sub_office_comment;
+        $data['head_of_sub_office_eval_date'] = date("Y-m-d");
+        $data['head_of_sub_office_status'] = 1;
+        $data['progress'] = 70;
+        EmpEvaluations::where('eval_token', $request->eval_token)->update($data);
+        $token = EmpTokens::where('soc_reference', $evaldata->soc_reference)->value('fcm_token');
+        if ($token) {
+            FcmService::sendNotificationSingle(
+                $token,
+                'Evaluation Process',
+                "{$evaldata->head_of_sub_office_name} has finished the evalution for {$evaldata->request_for_month} -{$evaldata->request_for_year}"
+            );
+        }
+        return response()->json([
+            'success' => true,
+            'message' => "Evaluation Commented Successfully"
+        ]);
     }
     public function commentevaluatin(Request $request)
     {
-        //
+        $evaldata = EmpListEvaluations::where('eval_token', $request->eval_token)->first();
+        $data = [];
+        $data['employee_agreement'] = $request->employee_agreement;
+        $data['employee_comment'] = $request->employee_comment;
+        $data['employee_comment_date'] = date("Y-m-d");
+        $data['employee_status'] = 1;
+        $data['progress'] = 100;
+        EmpEvaluations::where('eval_token', $request->eval_token)->update($data);
+        return response()->json([
+            'success' => true,
+            'message' => "Evaluation Commented Successfully"
+        ]);
     }
     public function deleteevaluation(Request $request)
     {
-        //
+        $evaldata = EmpListEvaluations::where('eval_token', $request->eval_token)->first();
+        $data = [];
+        $data['deleted'] = 1;
+        EmpEvaluations::where('eval_token', $request->eval_token)->update($data);
+        return response()->json([
+            'success' => true,
+            'message' => "Evaluation Deleted Successfully"
+        ]);
     }
 }
