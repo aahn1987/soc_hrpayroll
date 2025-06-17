@@ -117,7 +117,7 @@ class IOMPersonnelController extends Controller
         $logindata = [
             'username' => $request->username,
             'userpass' => $request->userpass,
-            'userrole' => 'admin',
+            'userrole' => 'organization',
             'user_reference' => $reference,
         ];
         $addLogindata = new SysLoginDataController;
