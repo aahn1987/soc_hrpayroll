@@ -1,0 +1,30 @@
+public function getOrCreateDutyStationId(Request $request)
+{
+    $request->validate([
+        'duty_station' => 'required|string'
+    ]);
+
+    $originalName = $request->duty_station;
+    $normalizedName = only_letters_lowercase($originalName);
+
+    // Fetch all existing duty stations and normalize for comparison
+    $existing = DataDutyStation::where('deleted', 0)->get()->map(function ($item) {
+        $item->normalized = only_letters_lowercase($item->duty_station);
+        return $item;
+    });
+
+    // Try to find a match
+    $matched = $existing->firstWhere('normalized', $normalizedName);
+
+    if ($matched) {
+        return response()->json(['id' => $matched->id]);
+    }
+
+    // Create a new entry if not found
+    $new = new DataDutyStation();
+    $new->duty_station = $originalName;
+    $new->deleted = 0;
+    $new->save();
+
+    return response()->json(['id' => $new->id]);
+}

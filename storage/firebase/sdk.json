@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "sochrpayroll",
+  "private_key_id": "8460785264686fcc87903004fefce42ec00c760c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCdV8z+2QGtdjBO\nYl7Ufv0bkWiZ8RGo+MZPSkZTE1iGFKKYjIujlc+u6AFZ4NGucEbsC8ZVOst3V1uu\nFQWlh8k50a0NSv9pwK54CMJpQ1wMEjlKM2jMhkHldPDfQ1/qFT32idRI3e4iJvL5\nw5DxEsNJd/qcHRrmyK8dLbeWCQ2G+y1UvfuKKLy9S6BA8dW4SLoKxsITzGyzCgwF\nlbbtyhw3SYypplo1/myyVmC5WfYmgICBbaNMsCWDCgVINraWRqcJLDKzXXfRYLVv\n9mgNZ4FYko3XYOD4dyJivt2zEnHIdtgQMgmfwBc5912FfbPR+MTwanCaJ++Uhcpo\nExAjDuApAgMBAAECggEAAY2AA6TTGCniLKfaXTj6mPbMpDZFkRgRZu9p9cBrX3ld\nKGm8qArer5BxEPi/wPuxK3urQ6SOpPka+cMR2PIX2Yb48PhkQGArKJqXho/oXOMi\nJxoORvRtOo02olFpJSd8As6V5nkwNCyTucTFDaf8fuFc+wTrgssItV5B4UxqEoKs\nlzdEaRfqhQh3mX1QYiqEGc9/AQ4PcZdS69FnrwQkrNteSCaXmV8dzisG61BbWaY+\nOsNCthWo9ZeynmQWyCqdIvB/PGDSUBsHORB3as25qEdZBk282RiohKqbg23bsV8d\nW7bumdXAawk4lbARhA3+Hs9uae6nJ3FfLo4p4eUNIQKBgQDQ3qH8f7TT3HwVUUYX\nRuhZGPHnQt6+crIW0Y++lXAlTbaf/BFhAex1bV+qnJ44VQP6I37aa9eaEmNpnzKu\nWYn/ps2hI92P5jI4WuXKRkPLozY9HS4h8aMQ3TsYyxSTZJ9WBCuNsilnKjm+yHi9\nCrnvphrm/utD3pJ0S507ZvRDGQKBgQDA2LnhaLpSYr7dlPZO7U9Ap5NrRavgEL0W\nGXkOPuOizKlVKxvAhApgDOv9UyYnTaPCbl0IRYkQu7JM2xq5RJiDin4qTK5wTzC7\nyLHSz36RMScnmbxVmt1TMu92H1vtidF6yrK9ujCQSBc6CXO25xsjvd8I0bxKTL/t\nvbimsm63kQKBgGaq6IjK5UG2gS+hUYijjBYvksiQMBkBG9TnkXam0gckGf6t0oUS\ngv59kqa0cXlTIK9Vv0bx93p+S2thm3HkBVcq0KzCimfvSQQ2eflhbHWudjy4GTMK\nKZNii2f2etiwfzmytw3hY0SYluXWeLLDkP3hchvVdiNYRjjv6guG4c4RAoGAGELr\n17zqO/UqWAwmlLVsVBEBDezc+7p/X2li/nTRBKlE4G8k9apm98CIa/1q/mTZJlvm\nHmVJIi7K9rpV+Vr06Q+iYcX16DE+S1GrdX8fSDrr1yKTPB3YnF/7GlxFn3PIQ+9+\nXzouY+h965JG2Yrnsi5wAdcJHjvbpZhJw8cNANECgYAC15QshM7wN+F5vmC+R76D\nykjU/uSwyY7g1T/26Gx3oofUiJa8p19jRLxPkCaxXADkS+UfWZ51gepUIw49FuD0\n02xDKgfL9ENogk8u2Bq8kDArIkdjak67IkT2rZeLXGt6LjYhBiBAdmtviPdo6kkL\n6nrYqbp36kMNAdWLn3yV1A==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fbsvc@sochrpayroll.iam.gserviceaccount.com",
+  "client_id": "115795317405625622766",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sochrpayroll.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -1,0 +1,13 @@
+use App\Http\Controllers\ReportController;
+
+class EmployeeController extends Controller
+{
+    public function someFunction()
+    {
+        $reportController = new ReportController();
+        $result = $reportController->generateReport();
+
+        // استخدم $result كما تريد
+        return response()->json($result);
+    }
+}
